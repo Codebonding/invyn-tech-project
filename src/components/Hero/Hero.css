@@ -96,13 +96,15 @@
   background:
     linear-gradient(
       130deg,
-      #ffffff,
-      #0B9AF0
+      #b9daee,
+      #b9daeede
+      /* #ffffff */
+      
     );
 
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+} 
 
 
 /* Description */
