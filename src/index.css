@@ -1,3 +1,8 @@
+
+@import "../src/styles/variables.css";
+@import "../src/styles/animations.css";
+@import "../src/styles/utilities.css";
+@import "../src/styles/sections.css";
 body {
   background:
     radial-gradient(

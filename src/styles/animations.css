@@ -1,0 +1,36 @@
+@keyframes invGradientText { from { background-position: 0% center; } to { background-position: 100% center; } }
+@keyframes invMarqueeLeft  { from { transform: translate3d(0,0,0); } to { transform: translate3d(-50%,0,0); } }
+@keyframes invMarqueeRight { from { transform: translate3d(-50%,0,0); } to { transform: translate3d(0,0,0); } }
+@keyframes invChipFloat    { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+.inv-gradient-text {
+  background: var(--inv-gradient);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--inv-secondary);
+  animation: invGradientText 6s ease-in-out infinite alternate;
+}
+
+.inv-reveal {
+  opacity: 0;
+  transform: translate3d(var(--inv-rx, 0), var(--inv-ry, 24px), 0);
+  transition: opacity var(--inv-rd, 600ms) var(--inv-ease) var(--inv-rdelay, 0ms),
+              transform var(--inv-rd, 600ms) var(--inv-ease) var(--inv-rdelay, 0ms);
+}
+.inv-reveal.is-visible { opacity: 1; transform: none; }
+
+.inv-marquee__track { display: flex; width: max-content; will-change: transform; animation: invMarqueeLeft var(--inv-speed, 30s) linear infinite; }
+.inv-marquee__track.dir-right { animation-name: invMarqueeRight; }
+.inv-marquee.pause-on-hover:hover .inv-marquee__track,
+.inv-marquee.pause-on-hover:focus-within .inv-marquee__track { animation-play-state: paused; }
+.inv-marquee.is-manual .inv-marquee__track { animation: none; will-change: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .inv-gradient-text { animation: none; }
+  .inv-chip { animation: none !important; }
+  .inv-marquee__track { animation: none !important; }
+  .inv-reveal { opacity: 1; transform: none; transition: none; }
+  .inv-glass-card, .inv-card__icon, .inv-card__link-arrow { transition: none !important; }
+}

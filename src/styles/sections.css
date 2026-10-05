@@ -1,0 +1,99 @@
+/* ---------- Glass card ---------- */
+.inv-glass-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,255,255,.62), rgba(11,154,240,.06));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(140,214,255,.28);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(3,31,148,.12);
+  overflow: hidden;
+  transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease, background 300ms ease;
+}
+.inv-glass-card::before { content:""; position:absolute; inset:0; background: linear-gradient(135deg, rgba(255,255,255,.10), transparent 35%); pointer-events:none; }
+.inv-glass-card::after { content:""; position:absolute; width:180px; height:180px; top:-100px; right:-80px; background:#0B9AF0; opacity:.08; filter: blur(70px); pointer-events:none; }
+.inv-glass-card:hover { transform: translateY(-7px); border-color: rgba(11,154,240,.35); box-shadow: 0 24px 60px rgba(3,31,148,.18); }
+.inv-visual-panel:hover, .inv-cta:hover { transform: none; }
+
+/* ---------- Shared card anatomy ---------- */
+.inv-card { height: 100%; padding: 28px; display: flex; flex-direction: column; }
+.inv-card__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; position: relative; z-index: 1; }
+.inv-card__icon { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; color: var(--inv-secondary); background: rgba(11,154,240,.1); border: 1px solid rgba(11,154,240,.2); transition: transform 300ms ease; }
+.inv-card:hover .inv-card__icon { transform: translateY(-3px); }
+.inv-card__num, .inv-card__category { font-size: .8rem; font-weight: 600; color: var(--inv-secondary); letter-spacing: .06em; }
+.inv-card__title { font-size: 1.2rem; font-weight: 700; color: var(--inv-text); margin: 0 0 10px; position: relative; z-index: 1; }
+.inv-card__text { color: var(--inv-text-muted); line-height: 1.65; margin: 0 0 20px; position: relative; z-index: 1; }
+.inv-card__link { margin-top: auto; align-self: flex-start; font-weight: 600; color: var(--inv-secondary); text-decoration: none; position: relative; z-index: 1; }
+.inv-card__link-arrow { display: inline-block; transition: transform 250ms ease; }
+.inv-card__link:hover .inv-card__link-arrow, .inv-card:hover .inv-card__link-arrow { transform: translateX(4px); }
+
+/* ---------- Company ---------- */
+.inv-prose p { color: var(--inv-text-muted); line-height: 1.75; font-size: 1.05rem; max-width: 62ch; margin: 0 0 14px; }
+.inv-highlight-lines { display: grid; gap: 2px; margin: 24px 0 0; padding-left: 16px; border-left: 3px solid var(--inv-accent); font-weight: 600; color: var(--inv-primary); font-size: 1.1rem; }
+
+.inv-visual-panel { padding: 48px 32px; min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.inv-visual-panel__brand { font-weight: 700; letter-spacing: .18em; color: var(--inv-primary); margin: 0 0 24px; position: relative; z-index: 1; }
+.inv-flow { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; position: relative; z-index: 1; }
+.inv-flow__step { display: inline-block; padding: 10px 28px; border-radius: 999px; background: var(--inv-gradient); color: #fff; font-weight: 700; letter-spacing: .1em; }
+.inv-flow__arrow { display: block; color: var(--inv-accent); font-size: 1.3rem; }
+.inv-chip { position: absolute; z-index: 1; padding: 6px 14px; font-size: .75rem; font-weight: 600; letter-spacing: .08em; color: var(--inv-secondary); background: rgba(255,255,255,.7); border: 1px solid rgba(11,154,240,.25); border-radius: 999px; animation: invChipFloat 7s ease-in-out infinite; }
+.inv-chip--1 { top: 8%;  left: 8%;  animation-delay: 0s; }
+.inv-chip--2 { top: 14%; right: 8%; animation-delay: -1.5s; }
+.inv-chip--3 { top: 46%; left: 4%;  animation-delay: -3s; }
+.inv-chip--4 { bottom: 14%; right: 6%; animation-delay: -4.5s; }
+.inv-chip--5 { bottom: 8%; left: 14%; animation-delay: -6s; }
+
+/* ---------- Courses ---------- */
+.inv-courses-stage { overflow: hidden; padding-block: 12px 32px; margin-top: 8px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.inv-marquee { overflow: hidden; }
+.inv-marquee.is-manual { overflow-x: auto; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; padding-inline: 16px; }
+.inv-marquee__group { display: flex; gap: var(--inv-gap); padding: 12px var(--inv-gap) 12px 0; margin: 0; list-style: none; }
+.inv-marquee__item { flex: 0 0 auto; width: min(340px, 82vw); scroll-snap-align: start; }
+.inv-course-card { padding: 26px; }
+.inv-pills { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0 0 22px; position: relative; z-index: 1; }
+.inv-pill { padding: 5px 12px; font-size: .78rem; font-weight: 500; color: var(--inv-secondary); background: rgba(11,154,240,.08); border: 1px solid rgba(11,154,240,.18); border-radius: 999px; }
+
+/* ---------- Internship journey ---------- */
+.inv-journey { position: relative; margin: clamp(48px, 7vw, 88px) 0; }
+.inv-journey__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; position: relative; z-index: 1; }
+.inv-journey__step { text-align: center; }
+.inv-journey__node { position: relative; display: inline-grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; color: var(--inv-gray); background: #fff; border: 2px solid rgba(86,87,92,.25); transition: color 400ms ease, border-color 400ms ease, box-shadow 400ms ease, background 400ms ease; }
+.inv-journey__num { position: absolute; top: -8px; right: -8px; font-size: .7rem; font-weight: 700; background: var(--inv-navy); color: #fff; border-radius: 999px; padding: 2px 6px; }
+.inv-journey__step.is-active .inv-journey__node { color: var(--inv-secondary); border-color: var(--inv-accent); box-shadow: 0 0 0 6px rgba(11,154,240,.12), 0 8px 22px rgba(11,154,240,.28); }
+.inv-journey__title { font-size: 1.05rem; font-weight: 700; margin: 14px 0 6px; color: var(--inv-text); }
+.inv-journey__desc { font-size: .9rem; color: var(--inv-text-muted); margin: 0 auto; max-width: 20ch; }
+
+.inv-journey__line { position: absolute; z-index: 0; top: 31px; left: 10%; right: 10%; height: 2px; background: rgba(86,87,92,.2); }
+.inv-journey__line span { display: block; height: 100%; background: var(--inv-gradient); transform-origin: left center; transform: scaleX(var(--inv-progress, 0)); transition: transform 450ms linear; }
+
+/* ---------- CTA ---------- */
+.inv-cta { padding: clamp(32px, 5vw, 56px); text-align: center; }
+.inv-cta__title { font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 700; color: var(--inv-text); margin: 0 0 12px; position: relative; z-index: 1; }
+.inv-cta__text { max-width: 60ch; margin: 0 auto 28px; color: var(--inv-text-muted); line-height: 1.7; position: relative; z-index: 1; }
+.inv-cta__actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; position: relative; z-index: 1; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+  .inv-glass-card { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 14px 34px rgba(3,31,148,.1); }
+  .inv-glass-card::after { filter: blur(50px); }
+  .inv-card { padding: 24px; }
+  .inv-visual-panel { min-height: 340px; }
+}
+@media (max-width: 767.98px) {
+  .inv-glass-card { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 8px 22px rgba(3,31,148,.08); }
+  .inv-glass-card:hover { transform: none; }
+  .inv-card { padding: 20px; }
+  .inv-chip { animation: none; }
+  .inv-btn { width: 100%; }
+  .inv-courses-stage { -webkit-mask-image: none; mask-image: none; }
+
+  .inv-journey__steps { grid-template-columns: 1fr; gap: 28px; }
+  .inv-journey__step { display: grid; grid-template-columns: 64px 1fr; column-gap: 16px; text-align: left; align-items: center; }
+  .inv-journey__node { grid-row: span 2; }
+  .inv-journey__title { margin: 0; }
+  .inv-journey__desc { margin: 0; max-width: none; }
+  .inv-journey__line { top: 32px; bottom: 32px; left: 31px; right: auto; width: 2px; height: auto; }
+  .inv-journey__line span { width: 100%; height: 100%; transform-origin: center top; transform: scaleY(var(--inv-progress, 0)); }
+}

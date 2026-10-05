@@ -1,5 +1,5 @@
 import "../Hero/Hero.css";
-import heroVideo from '../../assets/videos/gemini.mp4';
+import heroVideo from '../../assets/videos/back.mp4';
 
 function Hero() {
   return (
@@ -20,7 +20,7 @@ function Hero() {
       <div className="hero-overlay"></div>
 
       {/* Content */}
-      <div className="container hero-content">
+      {/* <div className="container hero-content">
         <div className="row align-items-center min-vh-100">
 
           <div className="col-lg-8">
@@ -55,7 +55,7 @@ function Hero() {
           </div>
 
         </div>
-      </div>
+      </div> */}
 
       {/* Bottom Gradient */}
       <div className="hero-bottom-fade"></div>

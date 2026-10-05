@@ -3,27 +3,20 @@
   min-height: 100vh;
   overflow: hidden;
 
-  background: #031982;
+  /* background: #031982; */
 }
 
 .hero-video {
   position: absolute;
-
   top: 0;
   left: 0;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 
-  z-index: 0;
+  z-index: -1;
 }
-
-
-/* Blue Glass Overlay */
-
-.hero-overlay {
+/* .hero-overlay {
   position: absolute;
 
   inset: 0;
@@ -39,7 +32,7 @@
   backdrop-filter: blur(1px);
 
   z-index: 1;
-}
+} */
 
 
 /* Hero Content */

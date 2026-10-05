@@ -1,0 +1,17 @@
+/* Breakpoints (mirror utils/responsive.js): 576 / 768 / 992 / 1200 / 1400 */
+:root {
+  --inv-primary: #031F94;
+  --inv-secondary: #0333B7;
+  --inv-accent: #0B9AF0;
+  --inv-navy: #122B44;
+  --inv-gray: #56575C;
+  --inv-white: #FFFFFF;
+  --inv-gradient: linear-gradient(90deg, #031F94, #0333B7, #0B9AF0);
+
+  /* Defaults suit a light background. Override both on a dark one. */
+  --inv-text: var(--inv-navy);
+  --inv-text-muted: var(--inv-gray);
+
+  --inv-section-y: clamp(64px, 9vw, 120px);
+  --inv-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
