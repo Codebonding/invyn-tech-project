@@ -1,7 +1,10 @@
-export default function GlassCard({ as: Tag = "div", className = "", children, ...rest }) {
+import {forwardRef} from "react";
+
+const GlassCard = forwardRef(function GlassCard({ as: Tag = "div", className = "", children, ...rest }, ref) {
   return (
-    <Tag className={`inv-glass-card ${className}`.trim()} {...rest}>
+    <Tag ref={ref} className={`inv-glass-card ${className}`.trim()} {...rest}>
       {children}
     </Tag>
   );
-}
+});
+export default GlassCard;

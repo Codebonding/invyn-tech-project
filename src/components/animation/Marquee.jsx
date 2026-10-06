@@ -12,6 +12,7 @@ export default function Marquee({
   pauseOnHover = true,
   label = "Carousel",
   className = "",
+  paused = false
 }) {
   const reduced = useReducedMotion();
   const small = useMediaQuery(mq.belowTablet);
@@ -29,7 +30,7 @@ export default function Marquee({
 
   return (
     <div
-      className={`inv-marquee ${manual ? "is-manual" : ""} ${pauseOnHover ? "pause-on-hover" : ""} ${className}`.trim()}
+      className={`inv-marquee ${manual ? "is-manual" : ""} ${pauseOnHover ? "pause-on-hover" : ""}${paused ? "is-paused" : ""} ${className}`.trim()}
       style={{ "--inv-gap": `${gap}px`, "--inv-speed": `${speed}s` }}
       role="region"
       aria-label={label}

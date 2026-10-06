@@ -15,6 +15,9 @@ const PATHS = {
   target: "M12 22a10 10 0 100-20 10 10 0 000 20zM12 18a6 6 0 100-12 6 6 0 000 12zM12 14a2 2 0 100-4 2 2 0 000 4z",
   cloud: "M16 16l-4-4-4 4M12 12v9M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3",
   arrow: "M5 12h14M12 5l7 7-7 7",
+  clock: "M12 22a10 10 0 100-20 10 10 0 000 20zM12 6v6l4 2",
+  monitor: "M2 3h20v14H2zM8 21h8M12 17v4",
+  bars: "M4 20v-6M10 20V9M16 20V4"
 };
 
 export default function Icon({ name, size = 24, className = "", ...rest }) {
