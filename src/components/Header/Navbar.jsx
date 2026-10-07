@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import Logo from '../../assets/images/invyn_tech_logo.png';
+import Logo from '../../assets/images/invyn-logo.png';
 import './Navbar.css';
 import {NAV_ITEMS,CTA,DESKTOP_QUERY} from '../../utils/navData';
 function Chevron() {

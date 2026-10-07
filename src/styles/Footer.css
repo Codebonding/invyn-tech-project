@@ -1,0 +1,109 @@
+/* ================= Footer base ================= */
+.inv-footer {
+  --f-text: #F4F8FF;
+  --f-muted: #B9C8DC;
+  --f-accent: #8CD6FF;
+  --f-blue: #0B9AF0;
+  position: relative;
+  margin-top: clamp(40px, 6vw, 80px);
+  padding-block: clamp(48px, 6vw, 80px) 24px;
+  color: var(--f-muted);
+  background: linear-gradient(180deg, #132C48 0%, #031982 140%);
+  overflow-x: clip;
+  isolation: isolate;
+}
+/* top separation: gradient hairline + soft glow */
+.inv-footer::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 2px; z-index: 1;
+  background: linear-gradient(90deg, transparent, #031982, #023DE3, #0B9AF0, #8CD6FF, transparent);
+  background-size: 200% 100%;
+  animation: invFooterLine 8s linear infinite;
+}
+.inv-footer::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(60% 50% at 50% 0%, rgba(11,154,240,.18), transparent 70%);
+}
+@keyframes invFooterLine { from { background-position: 0% 0; } to { background-position: 200% 0; } }
+
+.inv-footer__inner { width: min(calc(100% - 48px), var(--content-max-width, 1400px)); margin-inline: auto; }
+
+/* ================= Columns ================= */
+.inv-footer__grid { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 40px 32px; }
+.inv-footer__logo { display: inline-block; border-radius: 8px; }
+.inv-footer__logo img { display: block; height: 44px; width: auto; max-width: 100%; }
+.inv-footer__desc { margin: 18px 0 0; max-width: 38ch; line-height: 1.7; font-size: .95rem; }
+
+.inv-fcol__title { margin: 0 0 16px; font-size: .85rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--f-text); }
+.inv-fcol__toggle { all: unset; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; width: 100%; cursor: pointer; border-radius: 6px; }
+.inv-fcol__chev { transition: transform 250ms ease; }
+.inv-fcol__toggle[aria-expanded="true"] .inv-fcol__chev { transform: rotate(180deg); }
+
+/* ================= Links ================= */
+.inv-flist { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.inv-flink { display: inline-flex; align-items: center; gap: 0; min-height: 32px; font-size: .95rem; color: var(--f-muted); text-decoration: none; border-radius: 6px; transition: color 220ms ease, transform 220ms ease, gap 220ms ease; }
+.inv-flink::before { content: ""; width: 0; height: 2px; border-radius: 2px; background: var(--f-blue); transition: width 220ms ease, margin 220ms ease; }
+.inv-flink:hover { color: var(--f-accent); transform: translateX(3px); }
+.inv-flink:hover::before { width: 10px; margin-right: 8px; }
+.inv-flink--inline::before { display: none; }
+.inv-flink--inline { display: inline; min-height: 0; color: var(--f-accent); text-decoration: underline; text-underline-offset: 3px; }
+.inv-flink--inline:hover { transform: none; }
+.inv-flink.is-soon { opacity: .55; cursor: default; }
+.inv-flink.is-soon:hover { color: var(--f-muted); transform: none; }
+.inv-flink.is-soon::before { display: none; }
+
+/* ================= Contact + social panel (the only glass block) ================= */
+.inv-footer__panel {
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 32px;
+  margin-top: clamp(32px, 4vw, 48px); padding: clamp(20px, 3vw, 32px);
+  background: linear-gradient(135deg, rgba(255,255,255,.07), rgba(11,154,240,.04));
+  border: 1px solid rgba(140,214,255,.16); border-radius: 20px;
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.2);
+}
+.inv-fcontact { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.inv-fcontact li { display: flex; align-items: center; gap: 12px; color: var(--f-muted); }
+.inv-fcontact svg { flex: 0 0 auto; color: var(--f-blue); }
+.inv-fcontact .inv-flink { word-break: break-word; }
+.inv-footer__muted { margin: 0; line-height: 1.7; }
+
+.inv-socials { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.inv-social { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--f-text); text-decoration: none; background: rgba(255,255,255,.06); border: 1px solid rgba(140,214,255,.22); transition: transform 220ms ease, background 220ms ease, border-color 220ms ease, color 220ms ease; }
+a.inv-social:hover { transform: translateY(-3px); color: #fff; background: rgba(11,154,240,.25); border-color: var(--f-blue); }
+.inv-social.is-off { opacity: .45; cursor: default; }
+
+/* ================= Legal + copyright ================= */
+.inv-footer__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-top: clamp(28px, 4vw, 40px); padding-top: 20px; border-top: 1px solid rgba(140,214,255,.14); font-size: .88rem; }
+.inv-footer__copy { margin: 0; }
+.inv-footer__legal { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 24px; }
+
+/* ================= Focus ================= */
+.inv-footer :is(a, button):focus-visible { outline: 2px solid var(--f-accent); outline-offset: 3px; }
+
+/* ================= Responsive ================= */
+@media (max-width: 1199.98px) {
+  .inv-footer__grid { grid-template-columns: repeat(4, 1fr); }
+  .inv-footer__brand { grid-column: 1 / -1; }
+}
+@media (max-width: 991.98px) {
+  .inv-footer__grid { grid-template-columns: repeat(2, 1fr); }
+  .inv-footer__panel { grid-template-columns: 1fr; }
+}
+@media (max-width: 767.98px) {
+  .inv-footer__inner { width: calc(100% - 32px); }
+  .inv-footer__grid { grid-template-columns: 1fr; gap: 0; }
+  .inv-footer__brand { padding-bottom: 20px; }
+  .inv-fcol.is-accordion { border-top: 1px solid rgba(140,214,255,.14); }
+  .inv-fcol.is-accordion:last-child { border-bottom: 1px solid rgba(140,214,255,.14); }
+  .inv-fcol.is-accordion .inv-fcol__title { margin: 0; }
+  .inv-fcol__toggle { min-height: 52px; }
+  .inv-fcol.is-accordion .inv-flist { padding-bottom: 14px; }
+  .inv-footer__bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* ================= Reduced motion ================= */
+@media (prefers-reduced-motion: reduce) {
+  .inv-footer::before { animation: none; }
+  .inv-flink, .inv-flink::before, .inv-social, .inv-fcol__chev { transition: none; }
+  .inv-flink:hover { transform: none; }
+  a.inv-social:hover { transform: none; }
+}
