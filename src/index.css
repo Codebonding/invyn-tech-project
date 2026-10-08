@@ -4,7 +4,8 @@
 @import "../src/styles/utilities.css";
 @import "../src/styles/sections.css";
 @import "../src/styles/courses.css";
-body {
+@import "../src/styles/tech-why.css";
+/* body {
   background:
     radial-gradient(
       circle at 20% 10%,
@@ -18,4 +19,4 @@ body {
       #002F91 75%,
       #00143D 100%
     );
-}
+} */
