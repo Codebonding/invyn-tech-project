@@ -103,4 +103,5 @@ export const CTA = {
   label: "Enroll Now",
   to: "/contact",
 };
+export const LOGIN_ROUTE = "/login";
 export const DESKTOP_QUERY = "(min-width: 992px)";

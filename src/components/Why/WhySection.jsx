@@ -7,7 +7,6 @@ import SceneHost from "../animation/3d/SceneHost";
 import { StaticCore } from "../animation/3d/fallbacks";
 import { LAYER_NAMES, whyCards, whyIntro } from "../../data/why";
 import { staggerDelay } from "../../utils/animation";
-
 const WhyCore3D = lazy(() => import("../animation/3d/WhyCore3D"));
 
 function WhyCard({ card, index, activeLayer, setLayer, side }) {

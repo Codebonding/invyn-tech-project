@@ -6,13 +6,13 @@ import Footer from "./components/Footer/Footer";
 function App() {
   return (
     <>
-      
-      <AnimatedBackground />
+     
+        <AnimatedBackground />
       <Header />
       <Hero />
       <HomeSections />
       <Footer />
-    
+      
       
 
     </>

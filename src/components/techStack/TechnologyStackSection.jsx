@@ -1,4 +1,4 @@
-import { lazy, useRef, useState } from "react";
+import { lazy,useMemo, useRef, useState } from "react";
 import Container from "../common/Container";
 import GradientText from "../common/GradientText";
 import SectionHeading from "../common/SectionHeading";
@@ -7,13 +7,12 @@ import SceneHost from "../animation/3d/SceneHost";
 import { StaticConstellation } from "../animation/3d/fallbacks";
 import { technologies, technologiesIntro } from "../../data/technologies";
 import { staggerDelay } from "../../utils/animation";
-
 const TechnologyConstellation = lazy(() => import("../animation/3d/TechnologyConstellation"));
 
 export default function TechnologyStackSection() {
   const sectionRef = useRef(null);
   const [activeId, setActiveId] = useState(null);
-
+ 
   return (
     <section ref={sectionRef} id="technology" className="inv-section inv-home3d" aria-labelledby="tech-title">
       <Container>
@@ -25,7 +24,6 @@ export default function TechnologyStackSection() {
             description={technologiesIntro.description}
           />
         </ScrollReveal>
-
         <div className="inv-stage3d inv-stage3d--tech">
           <SceneHost
             scene={TechnologyConstellation}

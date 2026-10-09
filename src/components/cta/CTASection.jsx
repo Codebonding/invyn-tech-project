@@ -6,7 +6,6 @@ import ScrollReveal from "../animation/ScrollReveal";
 import SceneHost from "../../components/animation/3d/SceneHost";
 import { StaticPortal } from "../animation/3d/fallbacks";
 import { ROUTES } from "../../utils/constant";
-
 const CTAPortal3D = lazy(() => import("../animation/3d/CTAPortal3D"));
 
 export default function CTASection() {
