@@ -33,24 +33,47 @@ function canvasTexture(w, h, draw) {
   return t;
 }
 
-export const makeBadgeTexture = (text) =>
-  canvasTexture(128, 128, (g, w, h) => {
-    const r = w / 2 - 6;
-    const fill = g.createRadialGradient(w / 2, h / 2, 4, w / 2, h / 2, r);
-    fill.addColorStop(0, "#0333B7");
-    fill.addColorStop(1, "#132C48");
-    g.fillStyle = fill;
-    g.beginPath(); g.arc(w / 2, h / 2, r, 0, Math.PI * 2); g.fill();
-    const ring = g.createLinearGradient(0, 0, w, h);
-    ring.addColorStop(0, "#0B9AF0");
-    ring.addColorStop(1, "#8CD6FF");
-    g.strokeStyle = ring; g.lineWidth = 6;
-    g.beginPath(); g.arc(w / 2, h / 2, r, 0, Math.PI * 2); g.stroke();
+function drawBadge(g, w, h, text, img) {
+  const r = w / 2 - 6;
+  const fill = g.createRadialGradient(w / 2, h / 2, 4, w / 2, h / 2, r);
+  fill.addColorStop(0, "#0333B7");
+  fill.addColorStop(1, "#132C48");
+  g.fillStyle = fill;
+  g.beginPath(); g.arc(w / 2, h / 2, r, 0, Math.PI * 2); g.fill();
+  const ring = g.createLinearGradient(0, 0, w, h);
+  ring.addColorStop(0, "#0B9AF0");
+  ring.addColorStop(1, "#8CD6FF");
+  g.strokeStyle = ring; g.lineWidth = 6;
+  g.beginPath(); g.arc(w / 2, h / 2, r, 0, Math.PI * 2); g.stroke();
+  if (img) {
+    g.fillStyle = "#F4F8FF";
+    g.beginPath(); g.arc(w / 2, h / 2, r - 7, 0, Math.PI * 2); g.fill();
+    const box = (r - 7) * 1.35;
+    const k = Math.min(box / img.width, box / img.height);
+    g.drawImage(img, w / 2 - (img.width * k) / 2, h / 2 - (img.height * k) / 2, img.width * k, img.height * k);
+  } else {
     g.fillStyle = "#F4F8FF";
     g.font = "700 46px system-ui, sans-serif";
     g.textAlign = "center"; g.textBaseline = "middle";
     g.fillText(text, w / 2, h / 2 + 3);
-  });
+  }
+}
+
+export function makeBadgeTexture(text, imageUrl) {
+  const t = canvasTexture(128, 128, (g, w, h) => drawBadge(g, w, h, text, null));
+  if (t && imageUrl) {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const g = t.image.getContext("2d");
+      g.clearRect(0, 0, 128, 128);
+      drawBadge(g, 128, 128, text, img);
+      t.needsUpdate = true;
+    };
+    img.src = imageUrl;
+  }
+  return t;
+}
 
 export function makeLabelTexture(text, size = 34) {
   const w = Math.max(160, Math.ceil(text.length * size * 0.62) + 56);

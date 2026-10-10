@@ -10,10 +10,6 @@ const _m = new THREE.Matrix4();
 const _q = new THREE.Quaternion();
 const _pq = new THREE.Quaternion();
 
-/**
- * Analytic two-bone IK (shoulder -> elbow -> wrist).
- * Writes elbow and wrist world positions. `pole` says which way the elbow points.
- */
 export function solveTwoBone(S, T, L1, L2, pole, outElbow, outWrist) {
   _dir.subVectors(T, S);
   let d = _dir.length();
