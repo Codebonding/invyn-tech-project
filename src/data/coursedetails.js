@@ -1,0 +1,110 @@
+
+const mod = (title, ...topics) => ({ title, topics });
+
+export const courseDetails = {
+  "ai-machine-learning": {
+    eligibility: "Basic computer skills and school-level mathematics.",
+    prerequisites: ["No prior programming experience is required for the beginner track", "Comfort with basic algebra and charts"],
+    curriculum: [
+      mod("Python and Maths Foundations", "Python essentials", "NumPy and Pandas", "Probability and statistics basics", "Data visualisation"),
+      mod("Machine Learning", "Supervised and unsupervised learning", "Feature engineering", "Model evaluation", "Scikit-learn workflows"),
+      mod("Deep Learning", "Neural network fundamentals", "TensorFlow or PyTorch basics", "Image models", "Introduction to NLP"),
+      mod("Applied AI", "Serving a model through an API", "Working with AI tools and APIs", "Capstone project"),
+    ],
+    outcomes: ["Prepare and explore real datasets", "Train and evaluate machine learning models", "Understand how neural networks work", "Present an end-to-end AI project"],
+    projects: ["Prediction model on a public dataset", "Image or text classifier", "Capstone: an AI feature behind a simple API"],
+    faqs: [{ q: "Do I need to know programming before joining?", a: "The beginner track starts with Python fundamentals. Ask INVYN TECH which track suits your current level." }],
+  },
+  "full-stack-development": {
+    eligibility: "Basic computer skills. Suitable for students, graduates and career switchers.",
+    prerequisites: ["No prior coding experience required for the beginner track", "A laptop or desktop with internet access"],
+    curriculum: [
+      mod("Web Foundations", "HTML and CSS", "JavaScript essentials", "Git and GitHub"),
+      mod("Frontend with React", "Components and state", "Routing", "Forms and API calls"),
+      mod("Backend with Node.js", "Express and REST APIs", "Authentication basics", "Error handling"),
+      mod("Databases", "SQL fundamentals", "Designing tables", "Connecting an API to a database"),
+      mod("Deployment and Capstone", "Environment configuration", "Deploying a full-stack app", "Capstone project"),
+    ],
+    outcomes: ["Build responsive interfaces with React", "Create and document REST APIs", "Model and query data with SQL", "Deploy a complete web application"],
+    projects: ["Responsive portfolio site", "REST API with a database", "Capstone: full-stack web application"],
+    faqs: [{ q: "Which technologies are covered?", a: "React, Node.js and SQL are the core stack, along with Git and deployment basics." }],
+  },
+  "data-science": {
+    eligibility: "Basic computer skills. A comfort with numbers is helpful.",
+    prerequisites: ["No prior data experience required", "Basic spreadsheet familiarity is useful"],
+    curriculum: [
+      mod("Python for Data", "Python essentials", "Pandas for data handling", "Cleaning messy data"),
+      mod("Statistics", "Descriptive statistics", "Probability basics", "Hypothesis testing"),
+      mod("Visualisation and Reporting", "Charts and dashboards", "Telling a story with data", "Reporting insights"),
+      mod("Machine Learning Basics", "Regression and classification", "Model evaluation", "Capstone project"),
+    ],
+    outcomes: ["Clean and analyse real datasets", "Choose suitable statistical methods", "Communicate findings with clear visuals", "Build a basic predictive model"],
+    projects: ["Exploratory analysis of a public dataset", "Interactive dashboard", "Capstone: data-driven business case"],
+    faqs: [],
+  },
+  "cloud-computing": {
+    eligibility: "Basic IT knowledge. Programming experience is helpful but not mandatory.",
+    prerequisites: ["Comfort using a command line is helpful", "Basic understanding of how websites work"],
+    curriculum: [
+      mod("Cloud Fundamentals", "Cloud service models", "Compute, storage and networking concepts", "Cost and security basics"),
+      mod("Linux and Networking", "Linux command line", "Networking essentials", "Scripting basics"),
+      mod("Containers", "Docker images and containers", "Running multi-container apps", "Registries"),
+      mod("Deployment and Automation", "CI/CD pipelines with Git", "Deploying to the cloud", "Monitoring basics"),
+    ],
+    outcomes: ["Explain core cloud concepts", "Package applications with Docker", "Automate builds and deployments", "Deploy and monitor a simple cloud application"],
+    projects: ["Containerised web application", "CI/CD pipeline for a sample app", "Capstone: cloud deployment"],
+    faqs: [],
+  },
+  cybersecurity: {
+    eligibility: "Basic computer and networking knowledge.",
+    prerequisites: ["No prior security experience required", "Willingness to learn networking basics"],
+    curriculum: [
+      mod("Security Fundamentals", "Threats and attack types", "Confidentiality, integrity, availability", "Security policies"),
+      mod("Networking for Security", "TCP/IP basics", "Firewalls and ports", "Traffic analysis"),
+      mod("Ethical Hacking Basics", "Reconnaissance", "Vulnerability scanning", "Responsible testing practices"),
+      mod("Application and Defensive Security", "Common web vulnerabilities", "Secure coding basics", "Logging and monitoring"),
+    ],
+    outcomes: ["Recognise common threats and weaknesses", "Use standard security tools responsibly", "Understand how web applications are attacked and defended", "Document findings clearly"],
+    projects: ["Network scan and report", "Web application vulnerability review in a lab environment", "Capstone: security assessment"],
+    faqs: [{ q: "Is the training legal and ethical?", a: "Practical work takes place only in lab environments set up for learning, never against systems you do not own." }],
+  },
+  "python-programming": {
+    eligibility: "No programming background needed. Open to students and beginners.",
+    prerequisites: ["Basic computer skills"],
+    curriculum: [
+      mod("Python Basics", "Variables and data types", "Conditions and loops", "Functions"),
+      mod("Data Structures", "Lists, tuples, sets and dictionaries", "Working with strings", "Problem-solving practice"),
+      mod("Object-Oriented Python", "Classes and objects", "Inheritance", "Modules and packages"),
+      mod("Files, APIs and Automation", "Reading and writing files", "Calling web APIs", "Automating everyday tasks"),
+    ],
+    outcomes: ["Write clear, working Python programs", "Use core data structures confidently", "Apply object-oriented design", "Automate repetitive tasks"],
+    projects: ["Command-line utility", "API-driven data fetcher", "Automation script for a real task"],
+    faqs: [],
+  },
+  "java-development": {
+    eligibility: "Basic computer skills. Prior programming is helpful but not required.",
+    prerequisites: ["Logical thinking and comfort with basic maths"],
+    curriculum: [
+      mod("Core Java", "Syntax and control flow", "Methods and arrays", "Strings and input/output"),
+      mod("Object-Oriented Programming", "Classes and objects", "Inheritance and polymorphism", "Interfaces and abstraction"),
+      mod("Collections and Exceptions", "Lists, sets and maps", "Exception handling", "Generics basics"),
+      mod("Databases and Spring", "JDBC and SQL basics", "Introduction to Spring", "Building a REST service"),
+    ],
+    outcomes: ["Design applications with object-oriented principles", "Use the Java collections framework", "Connect Java programs to a database", "Build a simple REST service"],
+    projects: ["Console-based management system", "Database-backed application", "Capstone: REST service with Spring"],
+    faqs: [],
+  },
+  "software-development": {
+    eligibility: "Basic computer skills. Suitable for beginners and early-career developers.",
+    prerequisites: ["Familiarity with at least one programming language is helpful"],
+    curriculum: [
+      mod("Software Lifecycle", "Requirements and planning", "Agile basics", "Version control with Git"),
+      mod("Programming Principles", "Clean code", "Data structures and algorithms basics", "Code reviews"),
+      mod("Testing and Debugging", "Unit testing", "Debugging techniques", "Quality practices"),
+      mod("Design and Teamwork", "System design basics", "Working in a team", "Team project"),
+    ],
+    outcomes: ["Follow a professional development workflow", "Write maintainable, tested code", "Collaborate through Git and code reviews", "Contribute to a team project"],
+    projects: ["Version-controlled mini application", "Test suite for an existing codebase", "Capstone: team-built application"],
+    faqs: [],
+  },
+};

@@ -61,7 +61,6 @@ export default function Footer() {
               <img src={logo} alt="INVYN TECH" loading="lazy" decoding="async" />
             </Link>
             <p className="inv-footer__desc">{footerBrand.description}</p>
-            <p></p>
           </div>
 
           {footerColumns.map((col) => (

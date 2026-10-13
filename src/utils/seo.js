@@ -33,3 +33,16 @@ export function applySeo({ title, description, canonical }) {
     link.href = canonical;
   }
 }
+/** Adds (or removes, when data is null) one JSON-LD block for the current page. */
+export function setJsonLd(data) {
+  if (typeof document === "undefined") return;
+  let el = document.getElementById("inv-jsonld");
+  if (!data) { el?.remove(); return; }
+  if (!el) {
+    el = document.createElement("script");
+    el.id = "inv-jsonld";
+    el.type = "application/ld+json";
+    document.head.appendChild(el);
+  }
+  el.textContent = JSON.stringify(data);
+}

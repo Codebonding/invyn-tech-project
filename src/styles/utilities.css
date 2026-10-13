@@ -9,8 +9,8 @@
 .inv-section-desc { color: var(--inv-text-muted); font-size: clamp(1rem, 1.6vw, 1.125rem); line-height: 1.7; margin: 0; }
 
 .inv-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 26px; border-radius: 999px; font-weight: 600; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease; }
-.inv-btn--primary { background: var(--inv-gradient); color: #fff; box-shadow: 0 10px 24px rgba(3,31,148,.22); }
-.inv-btn--primary:hover { transform: translateY(-2px); color: #fff; box-shadow: 0 14px 30px rgba(3,31,148,.28); }
+.inv-btn--primary { background: var(--inv-btn); color: #fff; box-shadow: 0 10px 24px rgba(3,31,148,.22); }
+.inv-btn--primary:hover { transform: translateY(-2px);background: var(--inv-hover); color: #8be4fa; box-shadow: 0 14px 30px rgba(3,31,148,.28); }
 .inv-btn--outline { background: rgba(255,255,255,.4); color: var(--inv-primary); border-color: rgba(3,51,183,.35); }
 .inv-btn--outline:hover { border-color: var(--inv-accent); color: var(--inv-secondary); transform: translateY(-2px); }
 .inv-btn:hover .inv-btn__arrow { transform: translateX(4px); }

@@ -12,8 +12,23 @@ export const BRAND = {
 };
 
 export const ROUTES = {
+  home: "/",
+  about: "/?section=about",
   services: "/services",
+  servicesSection: "/?section=services",
   courses: "/courses",
-  internships: "/internships",
-  contact: "/contact",
+  coursesSection: "/?section=courses",
+  internships: "/?section=internship",
+  technology: "/?section=technology",
+  why: "/?section=why",
+  testimonials: "/?section=testimonials",
+  contact: "/?section=cta",
+  careers: "/careers",
+  login: "/login",
+  privacy: "/privacy-policy",
+  terms: "/terms-and-conditions",
 };
+
+export const getCourseRoute = (slug) => `/courses/${slug}`;
+
+export const getServiceRoute = (slug) => `/services/${slug}`;

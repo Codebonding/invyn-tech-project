@@ -18,7 +18,7 @@
 /* ================= Filter ================= */
 .inv-filter { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px; }
 .inv-filter__btn { min-height: 40px; padding: 8px 18px; border-radius: 999px; font-weight: 600; font-size: .9rem; cursor: pointer; color: var(--inv-text-muted); background: rgba(255,255,255,.05); border: 1px solid rgba(140,214,255,.2); transition: color 250ms ease, border-color 250ms ease, background 250ms ease; }
-.inv-filter__btn:hover { color: var(--inv-text); border-color: rgba(11,154,240,.5); }
+.inv-filter__btn:hover { color: var(--inv-text); border-color: rgba(11,154,240,.5); background:var(--inv-btn); }
 .inv-filter__btn[aria-pressed="true"] { color: #fff; background: linear-gradient(90deg, #031982, #023DE3, #0B9AF0); border-color: transparent; }
 .inv-filter__btn:focus-visible, .inv-ctrl:focus-visible, .inv-dot:focus-visible, .inv-mini:focus-visible { outline: 3px solid var(--inv-accent); outline-offset: 3px; }
 

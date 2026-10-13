@@ -105,8 +105,8 @@
 .inv-nav .inv-brand {
   display: inline-flex;
   align-items: center;
-  min-width: 0;
-  /* padding: 5px 12px; */
+  min-width: 50px;
+  padding: 5px 12px;
   border-radius: 100%;
   background: var(--nav-plate);
   box-shadow: 0 6px 18px -8px rgba(2, 8, 24, 0.6);
@@ -119,7 +119,7 @@
 .inv-brand__img {
   display: block;
   width: auto;
-  max-width: 100%;
+  max-width: 80%;
   object-fit: contain;
 }
 .inv-brand__img--full { height: 30px; }
@@ -194,18 +194,568 @@
   transition: color 0.2s var(--nav-ease), background-color 0.2s var(--nav-ease), border-color 0.2s var(--nav-ease),
     box-shadow 0.2s var(--nav-ease);
 }
-.inv-nav .inv-nav__link:hover,
+.inv-nav ,
 .inv-nav .inv-nav__trigger[aria-expanded='true'] {
   color: #fff;
-  background: var(--nav-hover-bg);
+  /* background: var(--nav-hover-bg); */
 }
 /* active page: a soft pill, no underline */
 .inv-nav .inv-nav__link.is-active,
 .inv-nav .inv-nav__link.is-active:hover {
   color: #fff;
-  background: rgba(11, 154, 240, 0.14);
+  /* background: rgba(11, 154, 240, 0.14); */
   border-color: rgba(140, 214, 255, 0.2);
-  box-shadow: 0 0 18px -4px rgba(11, 154, 240, 0.55);
+  /* box-shadow: 0 0 18px -4px rgba(11, 154, 240, 0.55); */
+}
+
+/* ---------- 1. Tokens ---------- */
+.inv-nav-wrap {
+  --nav-secondary: #0333b7;
+  --nav-accent: #0b9af0;
+  --nav-ice: #8cd6ff;
+  --nav-text: rgba(255, 255, 255, 0.9);
+  --nav-text-muted: rgba(255, 255, 255, 0.72);
+  --nav-border: rgba(140, 214, 255, 0.18);
+  --nav-hover-bg: rgba(140, 214, 255, 0.1);
+  --nav-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --nav-h: 64px;
+  --nav-pad: clamp(20px, 4vw, 64px); /* padding of the CONTENT; the glass itself is edge to edge */
+  --nav-plate: rgba(255, 255, 255, 0.96); /* logo plate; set to transparent if you use a light logo */
+}
+
+/* ---------- 2. Wrapper: full width, no gaps, no pill ---------- */
+.inv-nav-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1100;
+}
+
+.inv-nav {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+/* Glass lives on a pseudo-element so dropdown panels can blur the PAGE
+   (a parent with backdrop-filter would become their backdrop root). */
+.inv-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(3, 25, 130, 0.02), rgba(18, 44, 72, 0.08), rgba(2, 61, 227, 0.08));
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-bottom: 1px solid var(--nav-border);
+  /* top reflection + soft blue glow */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 30px -14px rgba(11, 154, 240, 0.35);
+  transition: background 0.35s var(--nav-ease), border-color 0.35s var(--nav-ease), box-shadow 0.35s var(--nav-ease);
+}
+
+/* scrolled: stronger glass, darker navy, stronger border, more glow (still full width) */
+.inv-nav-wrap.is-scrolled .inv-nav::before {
+  background: linear-gradient(90deg, rgba(3, 25, 130, 0.01), rgba(14, 34, 58, 0.01), rgba(2, 61, 227, 0.01));
+  border-bottom-color: rgba(140, 214, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 14px 34px -12px rgba(11, 154, 240, 0.5);
+}
+.inv-nav.is-menu-open::before {
+  background: linear-gradient(90deg, rgba(3, 25, 130, 0.97), rgba(14, 34, 58, 0.98), rgba(2, 61, 227, 0.94));
+}
+
+.inv-nav-wrap ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.inv-nav :focus-visible {
+  outline: 2px solid var(--nav-ice);
+  outline-offset: 2px;
+}
+
+/* ---------- 3. Bar layout: [ brand ] [ navigation ] [ actions ] ---------- */
+.inv-nav__bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  min-height: var(--nav-h);
+  padding-inline: var(--nav-pad);
+}
+/* energy sweep along the bottom edge (played once by the intro) */
+.inv-nav__bar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(140, 214, 255, 0.95), transparent) no-repeat;
+  background-size: 30% 100%;
+  background-position: -40% 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.inv-nav__actions { justify-self: end; }
+.inv-nav__links { justify-self: center; }
+
+/* ---------- 4. Brand / logo ---------- */
+.inv-nav .inv-brand {
+  min-width: 0;
+  /* padding: 5px 12px; */
+  border-radius: 100%;
+  background: var(--nav-plate);
+  box-shadow: 0 6px 18px -8px rgba(2, 8, 24, 0.6);
+  text-decoration: none;
+  transition: transform 0.3s var(--nav-ease);
+}
+.inv-nav .inv-brand:hover { transform: translateY(-1px); }
+.inv-brand__img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.inv-brand__img--full { height: 30px; }
+.inv-brand__img--mark { display: none; height: 34px; }
+.inv-brand__text {
+  color: #09182d;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.inv-brand__text span { color: #023de3; }
+
+/* ---------- 5. Buttons ---------- */
+.inv-nav .inv-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid rgba(140, 214, 255, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #031982 0%, #023de3 55%, #0b9af0 135%);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 0 6px 16px -6px rgba(2, 8, 24, 0.6);
+  transition: transform 0.25s var(--nav-ease), filter 0.25s var(--nav-ease), border-color 0.25s var(--nav-ease);
+}
+.inv-nav .inv-btn:hover {
+  color: #fff;
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+.inv-nav .inv-btn--ghost {
+  background: transparent;
+  box-shadow: none;
+}
+.inv-nav .inv-btn--ghost:hover {
+  border-color: var(--nav-ice);
+  filter: none;
+}
+
+/* ---------- 6. Links: travelling underline (desktop + mobile) ---------- */
+.inv-nav__item {
+  position: relative;
+}
+.inv-nav .inv-nav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border: 0;
+  background: transparent;
+  color: var(--nav-text);
+  font-family: inherit;
+  font-size: 0.93rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s var(--nav-ease);
+}
+.inv-nav .inv-nav__link:hover,
+.inv-nav .inv-nav__trigger[aria-expanded='true'],
+.inv-nav .inv-nav__link.is-active {
+  color: #fff;
+}
+
+/* The line: leaves toward the END when you move away, and re-enters from the START on hover/focus. */
+.inv-nav .inv-nav__link::after,
+.inv-nav .inv-m__link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--nav-secondary), var(--nav-accent), var(--nav-ice));
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.45s var(--nav-ease);
+  pointer-events: none;
+}
+.inv-nav .inv-nav__link:hover::after,
+.inv-nav .inv-nav__link:focus-visible::after,
+.inv-nav .inv-nav__trigger[aria-expanded='true']::after,
+.inv-nav .inv-nav__link.is-active::after,
+.inv-nav .inv-m__link:focus-visible::after,
+.inv-nav .inv-m__link.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Current page: the line stays, and a light streak keeps travelling from start to end along it. */
+.inv-nav .inv-nav__link.is-active::before,
+.inv-nav .inv-m__link.is-active::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  border-radius: 2px;
+  z-index: 1;
+  background: linear-gradient(90deg, transparent, #fff, transparent) no-repeat;
+  background-size: 34% 100%;
+  background-position: -50% 0;
+  animation: inv-underline-run 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes inv-underline-run {
+  0% { background-position: -50% 0; opacity: 0; }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { background-position: 150% 0; opacity: 0; }
+}
+.inv-chevron {
+  flex-shrink: 0;
+  transition: transform 0.25s var(--nav-ease);
+}
+[aria-expanded='true'] > .inv-chevron {
+  transform: rotate(180deg);
+}
+
+/* ---------- 7. Desktop dropdowns ---------- */
+.inv-dd {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: min(580px, calc(100vw - 32px));
+  padding-top: 14px; /* invisible hover bridge between trigger and panel */
+  transform: translateX(-50%);
+  visibility: hidden;
+  transition: visibility 0s linear 0.22s;
+}
+.inv-dd.is-open {
+  visibility: visible;
+  transition-delay: 0s;
+}
+/* opacity/transform live on the panel so its backdrop blur keeps working */
+.inv-dd__panel {
+  padding: 10px;
+  border: 1px solid rgba(140, 214, 255, 0.22);
+  border-radius: 18px;
+  background: rgba(10, 27, 48, 0.9);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: 0 18px 44px rgba(2, 8, 24, 0.5), 0 0 34px -10px rgba(11, 154, 240, 0.3);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.22s var(--nav-ease), transform 0.22s var(--nav-ease);
+}
+.inv-dd.is-open .inv-dd__panel {
+  opacity: 1;
+  transform: translateY(0);
+}
+.inv-dd__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+.inv-nav .inv-dd__link {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.2s var(--nav-ease);
+}
+.inv-dd__title {
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.3;
+  transition: color 0.2s var(--nav-ease);
+}
+.inv-dd__desc {
+  color: var(--nav-text-muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+.inv-nav .inv-dd__link:hover {
+  background: rgba(11, 154, 240, 0.16);
+}
+.inv-nav .inv-dd__link:hover .inv-dd__title {
+  color: var(--nav-ice);
+}
+.inv-nav .inv-dd__link.is-active .inv-dd__title {
+  color: var(--nav-accent);
+}
+.inv-dd__footer {
+  margin-top: 8px;
+  padding: 8px 4px 0;
+  border-top: 1px solid rgba(140, 214, 255, 0.14);
+}
+.inv-nav .inv-dd__all {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  color: var(--nav-ice);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s var(--nav-ease), color 0.2s var(--nav-ease);
+}
+.inv-nav .inv-dd__all:hover {
+  color: #fff;
+  background: var(--nav-hover-bg);
+}
+.inv-dd__all .inv-chevron {
+  transform: rotate(-90deg);
+}
+
+/* ---------- 8. Hamburger ---------- */
+.inv-nav__toggle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--nav-border);
+  border-radius: 12px;
+  background: var(--nav-hover-bg);
+  cursor: pointer;
+  transition: background-color 0.2s var(--nav-ease), border-color 0.2s var(--nav-ease);
+}
+.inv-nav__toggle:hover {
+  background: rgba(140, 214, 255, 0.18);
+  border-color: rgba(140, 214, 255, 0.4);
+}
+.inv-nav__toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 2px;
+  background: #fff;
+  transition: transform 0.28s var(--nav-ease), opacity 0.2s var(--nav-ease);
+}
+.inv-nav__toggle.is-open .inv-nav__toggle-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.inv-nav__toggle.is-open .inv-nav__toggle-bar:nth-child(2) { opacity: 0; }
+.inv-nav__toggle.is-open .inv-nav__toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- 9. Mobile / tablet menu ---------- */
+.inv-mobile {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.32s var(--nav-ease), visibility 0s linear 0.32s;
+}
+.inv-mobile.is-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.inv-mobile__clip {
+  min-height: 0;
+  overflow: hidden;
+}
+.inv-mobile__scroll {
+  max-height: calc(100vh - var(--nav-h) - 8px);
+  max-height: calc(100dvh - var(--nav-h) - 8px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 6px var(--nav-pad) 16px;
+  border-top: 1px solid var(--nav-border);
+}
+.inv-m__list {
+  gap: 2px;
+}
+.inv-nav .inv-m__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 13px 12px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--nav-text);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s var(--nav-ease), color 0.2s var(--nav-ease);
+}
+.inv-nav .inv-m__link::after,
+.inv-nav .inv-m__link.is-active::before { left: 12px; right: 12px; bottom: 6px; }
+.inv-nav .inv-m__link:hover,
+.inv-nav .inv-m__trigger[aria-expanded='true'] {
+  color: #fff;
+  background: var(--nav-hover-bg);
+}
+.inv-nav .inv-m__link.is-active,
+.inv-nav .inv-m__link.is-active:hover {
+  color: #fff;
+}
+.inv-m__sub {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.28s var(--nav-ease), visibility 0s linear 0.28s;
+}
+.inv-m__sub.is-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.inv-m__subclip {
+  min-height: 0;
+  overflow: hidden;
+}
+.inv-m__sublist {
+  gap: 1px;
+  margin: 2px 0 6px 18px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(11, 154, 240, 0.4);
+}
+.inv-nav .inv-m__sublink {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--nav-text-muted);
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.2s var(--nav-ease), color 0.2s var(--nav-ease);
+}
+.inv-nav .inv-m__sublink:hover {
+  color: #fff;
+  background: var(--nav-hover-bg);
+}
+.inv-nav .inv-m__sublink.is-active {
+  color: var(--nav-accent);
+}
+.inv-nav .inv-m__sublink--all {
+  color: var(--nav-ice);
+  font-weight: 600;
+}
+body.inv-nav-lock {
+  overflow: hidden;
+}
+
+/* ---------- 10. Responsive ---------- */
+@media (max-width: 349.98px) {
+  .inv-brand__img--full { display: none; }
+  .inv-brand__img--mark { display: block; }
+  .inv-nav .inv-btn { padding: 0.45rem 0.7rem; font-size: 0.78rem; }
+  .inv-nav__bar { gap: 8px; }
+}
+@media (min-width: 576px) {
+  .inv-nav .inv-btn { padding: 0.55rem 1.1rem; font-size: 0.9rem; }
+  .inv-brand__img--full { height: 38px; }
+}
+@media (min-width: 768px) {
+  .inv-nav-wrap { --nav-h: 68px; }
+  .inv-brand__img--full { height: 40px; }
+}
+@media (min-width: 1200px) {
+  .inv-nav-wrap { --nav-h: 76px; }
+  .inv-brand__img--full { height: 44px; }
+  .inv-nav .inv-btn { padding: 0.6rem 1.25rem; }
+}
+
+/* ---------- 11. Intro choreography (driven by classes the controller sets on <html>) ---------- */
+@keyframes inv-glass-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes inv-rise {
+  from { opacity: 0; transform: translateY(-10px); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes inv-sweep {
+  0% { opacity: 1; background-position: -40% 0; }
+  100% { opacity: 0; background-position: 140% 0; }
+}
+
+/* before the Navbar stage: only the dark space is visible */
+html.intro-active:not(.intro-reached-navbar) .inv-nav::before,
+html.intro-active:not(.intro-reached-navbar) .inv-brand,
+html.intro-active:not(.intro-reached-navbar) .inv-nav__links > li,
+html.intro-active:not(.intro-reached-navbar) .inv-nav__actions {
+  opacity: 0;
+}
+
+/* order: glass → logo → navigation (staggered) → actions → glow travels across */
+html.intro-active.intro-reached-navbar .inv-nav::before {
+  animation: inv-glass-in calc(0.8s * var(--intro-speed, 1)) var(--nav-ease) both;
+}
+html.intro-active.intro-reached-navbar .inv-brand {
+  animation: inv-rise calc(0.7s * var(--intro-speed, 1)) var(--nav-ease) calc(0.7s * var(--intro-speed, 1)) both;
+}
+html.intro-active.intro-reached-navbar .inv-nav__links > li {
+  animation: inv-rise calc(0.6s * var(--intro-speed, 1)) var(--nav-ease)
+    calc((0.9s + var(--i, 0) * 0.07s) * var(--intro-speed, 1)) both;
+}
+html.intro-active.intro-reached-navbar .inv-nav__actions {
+  animation: inv-rise calc(0.6s * var(--intro-speed, 1)) var(--nav-ease) calc(1.2s * var(--intro-speed, 1)) both;
+}
+html.intro-active.intro-reached-navbar .inv-nav__bar::after {
+  animation: inv-sweep calc(1.6s * var(--intro-speed, 1)) ease-in-out calc(1.3s * var(--intro-speed, 1)) both;
+}
+.inv-nav__links > li:nth-child(1) { --i: 0; }
+.inv-nav__links > li:nth-child(2) { --i: 1; }
+.inv-nav__links > li:nth-child(3) { --i: 2; }
+.inv-nav__links > li:nth-child(4) { --i: 3; }
+.inv-nav__links > li:nth-child(5) { --i: 4; }
+.inv-nav__links > li:nth-child(6) { --i: 5; }
+.inv-nav__links > li:nth-child(7) { --i: 6; }
+.inv-nav__links > li:nth-child(8) { --i: 7; }
+
+/* ---------- 12. Fallbacks ---------- */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .inv-nav::before { background: linear-gradient(90deg, #031982, #0e2238, #0233b8); }
+  .inv-dd__panel { background: rgba(10, 27, 48, 0.98); }
+}
+
+/* ---------- 13. Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .inv-nav-wrap *,
+  .inv-nav-wrap *::before,
+  .inv-nav-wrap *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+    animation: none !important;
+  }
+  .inv-nav .inv-btn:hover { transform: none; }
 }
 .inv-chevron {
   flex-shrink: 0;

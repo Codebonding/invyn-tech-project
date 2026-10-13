@@ -20,7 +20,7 @@
 .inv-card__top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; position: relative; z-index: 1; }
 .inv-card__icon { display: inline-grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; color: var(--inv-gray); background: rgba(11,154,240,.1); border: 1px solid rgba(11,154,240,.2); transition: transform 300ms ease; }
 .inv-card:hover .inv-card__icon { transform: translateY(-3px); }
-.inv-card__num, .inv-card__category { font-size: .8rem; font-weight: 600; color: var(--inv-secondary); letter-spacing: .06em; }
+.inv-card__num, .inv-card__category { font-size: .8rem; font-weight: 600; color: var(--inv-navy); letter-spacing: .06em; }
 .inv-card__title { font-size: 1.2rem; font-weight: 700; color: var(--inv-text); margin: 0 0 10px; position: relative; z-index: 1; }
 .inv-card__text { color: var(--inv-text-muted); line-height: 1.65; margin: 0 0 20px; position: relative; z-index: 1; }
 .inv-card__link { margin-top: auto; align-self: flex-start; font-weight: 600; color: var(--inv-secondary); text-decoration: none; position: relative; z-index: 1; }
@@ -32,7 +32,7 @@
 .inv-highlight-lines { display: grid; gap: 2px; margin: 24px 0 0; padding-left: 16px; border-left: 3px solid var(--inv-accent); font-weight: 600; color: var(--inv-navy); font-size: 1.1rem; }
 
 .inv-visual-panel { padding: 48px 32px; min-height: 380px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.inv-visual-panel__brand { font-weight: 700; letter-spacing: .18em; color: var(--inv-primary); margin: 0 0 24px; position: relative; z-index: 1; }
+.inv-visual-panel__brand { font-weight: 700; letter-spacing: .18em; color: var(--inv-navy); margin: 0 0 24px; position: relative; z-index: 1; }
 .inv-flow { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; position: relative; z-index: 1; }
 .inv-flow__step { display: inline-block; padding: 10px 28px; border-radius: 999px; background: var(--inv-gradient); color: #fff; font-weight: 700; letter-spacing: .1em; }
 .inv-flow__arrow { display: block; color: var(--inv-accent); font-size: 1.3rem; }

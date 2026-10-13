@@ -1,3 +1,4 @@
+import { ROUTES } from "./constant";
 export const COURSES = [
   {
     label: "AI & Machine Learning",
@@ -26,12 +27,12 @@ export const COURSES = [
   },
   {
     label: "Python",
-    to: "/courses/python",
+    to: "/courses/python-programming",
     desc: "From fundamentals to automation",
   },
   {
     label: "Java",
-    to: "/courses/java",
+    to: "/courses/java-development",
     desc: "Core Java, Spring Boot and services",
   },
   {
@@ -78,30 +79,42 @@ export const SERVICES = [
   },
 ];
 export const NAV_ITEMS = [
-  { id: "home", label: "Home", to: "/", end: true },
-  { id: "about", label: "About", to: "/about" },
+  { id: "home", label: "Home", to: ROUTES.home, end: true },
+  { id: "about", label: "About", to: ROUTES.about },
+
   {
     id: "courses",
     label: "Courses",
-    to: "/courses",
+    to: ROUTES.courses,
     items: COURSES,
     wide: true,
     allLabel: "View all courses",
   },
+
   {
     id: "services",
     label: "Services",
-    to: "/services",
+    to: ROUTES.services,
     items: SERVICES,
     wide: false,
     allLabel: "View all services",
   },
-  { id: "careers", label: "Careers", to: "/careers" },
-  { id: "contact", label: "Contact", to: "/contact" },
+  { id: "internships", label: "Internships", to: ROUTES.internships },
+  { id: "contact", label: "Contact", to: ROUTES.contact },
 ];
 export const CTA = {
   label: "Enroll Now",
-  to: "/contact",
+  to: ROUTES.contact,
 };
-export const LOGIN_ROUTE = "/login";
-export const DESKTOP_QUERY = "(min-width: 992px)";
+export const LOGIN_ROUTE = ROUTES.login;
+export const DESKTOP_QUERY = "(min-width: 1200px)"; // Bootstrap "xl": must match the d-xl-* classes used in Navbar.jsx
+
+/** NavLink ignores "?query", so "/?section=about" would be active on every home view. Match path and section ourselves. */
+export function isNavActive(item, { pathname, search }) {
+  const [path, query = ""] = item.to.split("?");
+  const wanted = new URLSearchParams(query).get("section");
+  const current = new URLSearchParams(search).get("section");
+  if (wanted) return pathname === path && current === wanted;
+  if (item.end) return pathname === path && !current;
+  return pathname === path || pathname.startsWith(`${path}/`);
+}

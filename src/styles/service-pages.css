@@ -1,0 +1,19 @@
+/* Services module extras. Layout, cards, forms and detail blocks reuse course-pages.css and sections.css. */
+.inv-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.inv-steps li { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; padding: 16px 18px; border-radius: 14px; background: rgba(255,255,255,.05); border: 1px solid rgba(140,214,255,.16); }
+.inv-steps__num { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; font-weight: 700; color: var(--inv-text-accent, #6CC8FF); background: rgba(11,154,240,.1); border: 1px solid rgba(11,154,240,.25); }
+.inv-steps__title { margin: 0 0 4px; font-size: 1.05rem; font-weight: 700; color: var(--inv-text, #F4F8FF); }
+.inv-steps p { margin: 0; color: var(--inv-text-muted, #B9C8DC); line-height: 1.6; }
+
+.inv-svc-cta { margin-top: 48px; padding: clamp(24px, 4vw, 40px); border-radius: 20px; text-align: center; display: grid; gap: 14px; justify-items: center; background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(11,154,240,.06)); border: 1px solid rgba(140,214,255,.25); }
+.inv-svc-cta h2 { margin: 0; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; color: var(--inv-text, #F4F8FF); }
+.inv-svc-cta p { margin: 0; max-width: 560px; color: var(--inv-text-muted, #B9C8DC); line-height: 1.7; }
+.inv-svc-cta__actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+textarea.inv-cf__control { min-height: 120px; resize: vertical; }
+.inv-cd__facts dd { overflow-wrap: anywhere; }
+
+@media (max-width: 575.98px) {
+  .inv-steps li { grid-template-columns: 40px 1fr; gap: 12px; padding: 14px; }
+  .inv-steps__num { width: 40px; height: 40px; }
+}

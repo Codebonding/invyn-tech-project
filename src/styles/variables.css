@@ -7,7 +7,8 @@
   --inv-gray: #f6f6f8;
   --inv-white: #FFFFFF;
   --inv-gradient: linear-gradient(90deg, #031F94, #0333B7, #0B9AF0);
-
+  --inv-hover: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  --inv-btn: linear-gradient(to top, #4481eb 0%, #04befe 100%);
   /* Defaults suit a light background. Override both on a dark one. */
   --inv-text: var(--inv-navy);
   --inv-text-muted: var(--inv-gray);

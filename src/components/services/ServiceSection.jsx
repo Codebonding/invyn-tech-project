@@ -2,9 +2,8 @@ import Container from "../common/Container";
 import GradientText from "../common/GradientText";
 import SectionHeading from "../common/SectionHeading";
 import ScrollReveal from "../animation/ScrollReveal";
-import ServiceCard from "./ServiceCard";
+import ServiceGrid from "./ServiceGrid";
 import { services, servicesIntro } from "../../data/services";
-import { staggerDelay } from "../../utils/animation";
 
 export default function ServicesSection() {
   return (
@@ -18,15 +17,7 @@ export default function ServicesSection() {
             description={servicesIntro.description}
           />
         </ScrollReveal>
-        <div className="row g-4 mt-2">
-          {services.map((s, i) => (
-            <div className="col-12 col-md-6 col-lg-4" key={s.id}>
-              <ScrollReveal delay={staggerDelay(i)} className="h-100">
-                <ServiceCard {...s} />
-              </ScrollReveal>
-            </div>
-          ))}
-        </div>
+        <ServiceGrid items={services} />
       </Container>
     </section>
   );
