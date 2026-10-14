@@ -6,13 +6,29 @@
   --inv-navy: #a5d9d8;
   --inv-gray: #f6f6f8;
   --inv-white: #FFFFFF;
-  --inv-gradient: linear-gradient(90deg, #031F94, #0333B7, #0B9AF0);
-  --inv-hover: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+  --inv-gradient: linear-gradient(110deg, #031F94, #0333B7, #0B9AF0);
+  --inv-hover:  linear-gradient(90deg, #031F94, #0333B7, #0B9AF0);
   --inv-btn: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+  
   /* Defaults suit a light background. Override both on a dark one. */
   --inv-text: var(--inv-navy);
   --inv-text-muted: var(--inv-gray);
 
-  --inv-section-y: clamp(64px, 9vw, 120px);
+  --inv-section-y: clamp(48px, 6vw, 64px);
   --inv-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    /* Type scale */
+  --inv-fs-xs: .75rem;    /* 12px */
+  --inv-fs-sm: .875rem;   /* 14px */
+  --inv-fs-base: 1rem;    /* 16px */
+  --inv-fs-md: 1.125rem;  /* 18px */
+  --inv-fs-lg: 1.25rem;   /* 20px */
+  --inv-fs-xl: 1.5rem;    /* 24px */
+  --inv-fs-h3: clamp(1.4rem, 3vw, 2rem);
+  --inv-fs-h2: clamp(1.75rem, 4.2vw, 2.9rem);
+
+  /* Corner radii */
+  --inv-r-sm: 12px;
+  --inv-r-md: 16px;
+  --inv-r-lg: 24px;
+  --inv-r-pill: 999px;
 }

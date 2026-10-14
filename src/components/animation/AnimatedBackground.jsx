@@ -155,9 +155,9 @@ function createEngine(root, canvas) {
       }
 
       const alpha =
-        0.25 +
-        point.depth * 0.55 +
-        Math.sin(time * 0.002 + p.phase) * 0.15;
+       0.15 + 
+       point.depth * 0.35 + 
+       Math.sin(time * 0.002 + p.phase) * 0.1;
 
       ctx.globalAlpha = Math.max(0.05, alpha);
       ctx.fillStyle = "#8edcff";
@@ -203,7 +203,7 @@ function createEngine(root, canvas) {
 
         if (distance > 170) continue;
 
-        const alpha = (1 - distance / 170) * 0.35;
+        const alpha = (1 - distance / 170) * 0.18;
 
         ctx.strokeStyle = `rgba(70,175,245,${alpha})`;
         ctx.lineWidth = 0.8;
@@ -221,7 +221,7 @@ function createEngine(root, canvas) {
         Math.sin(time * 0.002 + nodes[i].phase) * 0.3;
 
       ctx.fillStyle = "#e1f4ff";
-      ctx.globalAlpha = 0.7;
+      ctx.globalAlpha = 0.45;
 
       ctx.beginPath();
       ctx.arc(
@@ -249,7 +249,7 @@ function createEngine(root, canvas) {
       const x = stream.x * width;
       const y = stream.progress * height;
 
-      ctx.globalAlpha = 0.35;
+      ctx.globalAlpha = 0.2;
       ctx.fillStyle = "#0b9af0";
 
       ctx.beginPath();

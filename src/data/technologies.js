@@ -14,7 +14,7 @@ import AIAgents from "../assets/images/AICourse/AI-Agents.png";
 
 
 export const technologiesIntro = {
-  eyebrow: "TECHNOLOGY STACK",
+  eyebrow: "AI Technologies",
   description:
     "From modern web frameworks to AI and cloud tools, INVYN TECH works with practical, industry-relevant technologies for both technology solutions and technology training.",
 };
@@ -31,5 +31,5 @@ export const technologies = [
   { id: "cloud", name: "Cloud", image:AIAgents, category: "Cloud & DevOps", description: "Scalable hosting, storage and deployment infrastructure." },
   { id: "git", name: "Git", image:RAG, category: "Tools", description: "Version control and collaboration for every project." },
   { id: "docker", name: "CV", image:CV, category: "Cloud & DevOps", description: "Containers for consistent builds and reliable deployments." },
-  { id: "docker", name: "CV", image:MLOps, category: "Cloud & DevOps", description: "Containers for consistent builds and reliable deployments." },
+  { id: "ComputerVision", name: "CV", image:MLOps, category: "Cloud & DevOps", description: "Containers for consistent builds and reliable deployments." },
 ];

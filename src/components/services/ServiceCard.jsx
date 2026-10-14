@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Button from "../common/Button";
 import GlassCard from "../common/GlassCard";
 import Icon from "../common/Icon";
 import { pad2 } from "../../utils/helpers";
@@ -13,9 +13,9 @@ export default function ServiceCard({ id, title, description, summary, icon, hre
       </div>
       <h3 className="inv-card__title">{title}</h3>
       <p className="inv-card__text">{description || summary}</p>
-      <Link to={href} className="inv-card__link" aria-label={`Explore ${title}`}>
-        Explore <span className="inv-card__link-arrow" aria-hidden="true">→</span>
-      </Link>
+      <Button href={href} variant="primary" className="inv-btn--sm inv-card__cta" arrow aria-label={`Explore ${title}`}>
+        Explore
+      </Button>
     </GlassCard>
   );
 }

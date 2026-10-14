@@ -1,5 +1,5 @@
 export const companyIntro = {
-  eyebrow: "ABOUT INVYN TECH",
+  eyebrow: "About INVYN TECH",
   paragraphs: [
     "INVYN TECH is a technology and professional training company focused on delivering modern IT solutions, software development services, AI-powered solutions, and industry-oriented technology training.",
     "We help businesses, startups, students, and aspiring developers turn ideas into practical digital solutions.",

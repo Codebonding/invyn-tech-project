@@ -95,7 +95,7 @@
 .inv-course3d__meta svg { color: var(--inv-text-accent); }
 .inv-course3d .inv-pills { margin: 0; }
 .inv-course3d .inv-btn { align-self: flex-start; }
-.inv-btn--sm { min-height: 40px; padding: 8px 20px; font-size: .9rem; }
+
 
 /* ================= Controls ================= */
 .inv-courses-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 8px; }

@@ -31,9 +31,9 @@ function Brand() {
   const [failed, setFailed] = useState(false);
 
   return (
-    <Link to="/" className="inv-brand d-inline-flex align-items-center" aria-label="INVYN TECH home">
+    <Link to="/" className="inv-brand d-inline-flex align-items-center flex-shrink-0" aria-label="INVYN TECH home">
       {failed ? (
-        <span className="inv-brand__text">
+        <span className="inv-brand__text text-nowrap">
           INVYN <span>TECH</span>
         </span>
       ) : (
@@ -82,7 +82,7 @@ function DesktopDropdown({ item, open, active, onOpen, onClose, onToggle }) {
   };
 
   return (
-    <li className="inv-nav__item" onPointerEnter={handleEnter} onPointerLeave={handleLeave} onBlur={handleFocusOut}>
+    <li className="inv-nav__item position-relative" onPointerEnter={handleEnter} onPointerLeave={handleLeave} onBlur={handleFocusOut}>
       <button
         type="button"
         className={activeClass("inv-nav__link inv-nav__trigger", active)}
@@ -99,12 +99,17 @@ function DesktopDropdown({ item, open, active, onOpen, onClose, onToggle }) {
         <Chevron />
       </button>
 
-      <div id={menuId} className={`inv-dd${open ? " is-open" : ""}`} aria-hidden={!open} inert={!open}>
+      <div
+        id={menuId}
+        className={`inv-dd position-absolute top-100 start-50 translate-middle-x${open ? " is-open" : ""}`}
+        aria-hidden={!open}
+        inert={!open}
+      >
         <div className="inv-dd__panel">
-          <ul className="inv-dd__list">
+          <ul className="inv-dd__list list-unstyled m-0 p-0 d-grid gap-1">
             {item.items.map((sub) => (
               <li key={sub.to}>
-                <NavLink to={sub.to} className={linkClass("inv-dd__link")}>
+                <NavLink to={sub.to} className={linkClass("inv-dd__link d-flex flex-column")}>
                   <span className="inv-dd__title">{sub.label}</span>
                   {sub.desc && <span className="inv-dd__desc">{sub.desc}</span>}
                 </NavLink>
@@ -113,7 +118,7 @@ function DesktopDropdown({ item, open, active, onOpen, onClose, onToggle }) {
           </ul>
 
           <div className="inv-dd__footer">
-            <NavLink to={item.to} end className="inv-dd__all">
+            <NavLink to={item.to} end className="inv-dd__all d-inline-flex align-items-center gap-2">
               {item.allLabel}
               <Chevron />
             </NavLink>
@@ -132,7 +137,7 @@ function MobileAccordion({ item, open, active, onToggle }) {
     <li className="inv-m__item">
       <button
         type="button"
-        className={activeClass("inv-m__link inv-m__trigger", active)}
+        className={activeClass("inv-m__link inv-m__trigger d-flex align-items-center justify-content-between w-100", active)}
         aria-expanded={open}
         aria-controls={panelId}
         aria-current={active ? "page" : undefined}
@@ -142,19 +147,19 @@ function MobileAccordion({ item, open, active, onToggle }) {
         <Chevron />
       </button>
 
-      <div id={panelId} className={`inv-m__sub${open ? " is-open" : ""}`} aria-hidden={!open} inert={!open}>
-        <div className="inv-m__subclip">
-          <ul className="inv-m__sublist d-grid">
+      <div id={panelId} className={`inv-m__sub d-grid${open ? " is-open" : ""}`} aria-hidden={!open} inert={!open}>
+        <div className="inv-m__subclip overflow-hidden">
+          <ul className="inv-m__sublist list-unstyled d-grid gap-1">
             {item.items.map((sub) => (
               <li key={sub.to}>
-                <NavLink to={sub.to} className={linkClass("inv-m__sublink")}>
+                <NavLink to={sub.to} className={linkClass("inv-m__sublink d-block")}>
                   {sub.label}
                 </NavLink>
               </li>
             ))}
 
             <li>
-              <NavLink to={item.to} end className="inv-m__sublink inv-m__sublink--all">
+              <NavLink to={item.to} end className="inv-m__sublink inv-m__sublink--all d-block">
                 {item.allLabel}
               </NavLink>
             </li>
@@ -199,7 +204,7 @@ export default function Navbar() {
     setMobileSection(null);
   }, [locationKey]);
 
-  /* Close mobile menu when the desktop breakpoint is reached */
+  /* Close mobile menu when the desktop breakpoint (Bootstrap xl) is reached */
   useEffect(() => {
     const mediaQuery = window.matchMedia(DESKTOP_QUERY);
 
@@ -261,13 +266,13 @@ export default function Navbar() {
   }, [openDropdown, mobileOpen]);
 
   return (
-    <header className={`inv-nav-wrap${scrolled ? " is-scrolled" : ""}`}>
-      <nav ref={navRef} className={`inv-nav${mobileOpen ? " is-menu-open" : ""}`} aria-label="Main navigation">
-        <div className="inv-nav__bar">
+    <header className={`inv-nav-wrap position-fixed top-0 start-0 w-100${scrolled ? " is-scrolled" : ""}`}>
+      <nav ref={navRef} className={`inv-nav position-relative w-100${mobileOpen ? " is-menu-open" : ""}`} aria-label="Main navigation">
+        <div className="inv-nav__bar position-relative d-flex align-items-center gap-2 gap-md-3">
           <Brand />
 
-          {/* Desktop navigation (Bootstrap xl and up) */}
-          <ul className="inv-nav__links d-none d-xl-flex align-items-center gap-1">
+          {/* Desktop navigation: Bootstrap xl and up */}
+          <ul className="inv-nav__links list-unstyled m-0 p-0 d-none d-xl-flex align-items-center justify-content-center flex-grow-1 gap-1">
             {NAV_ITEMS.map((item) => {
               const active = isNavActive(item, location);
               return hasMenu(item) ? (
@@ -281,7 +286,7 @@ export default function Navbar() {
                   onToggle={toggleMenu}
                 />
               ) : (
-                <li key={item.id} className="inv-nav__item">
+                <li key={item.id} className="inv-nav__item position-relative">
                   <Link to={item.to} className={activeClass("inv-nav__link", active)} aria-current={active ? "page" : undefined}>
                     {item.label}
                   </Link>
@@ -290,44 +295,44 @@ export default function Navbar() {
             })}
           </ul>
 
-          {/* Navbar actions */}
-          <div className="inv-nav__actions d-flex align-items-center gap-2">
-            <Link to={LOGIN_ROUTE} className="inv-btn inv-btn--ghost inv-nav__login d-none d-xl-inline-flex">
+          {/* Actions: always visible, pushed to the right edge */}
+          <div className="inv-nav__actions d-flex align-items-center gap-2 flex-shrink-0 ms-auto">
+            <Link to={LOGIN_ROUTE} className="inv-btn inv-btn--glass inv-btn--sm text-nowrap d-none d-xl-inline-flex">
               Login
             </Link>
 
-            <Link to={CTA.to} className="inv-btn">
+            <Link to={CTA.to} className="inv-btn inv-btn--primary inv-btn--sm text-nowrap">
               {CTA.label}
             </Link>
 
             <button
               ref={toggleRef}
               type="button"
-              className={`inv-nav__toggle d-xl-none${mobileOpen ? " is-open" : ""}`}
+              className={`inv-nav__toggle d-xl-none d-inline-flex flex-column align-items-center justify-content-center p-0${mobileOpen ? " is-open" : ""}`}
               aria-expanded={mobileOpen}
               aria-controls="inv-mobile-menu"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               onClick={() => setMobileOpen((current) => !current)}
             >
-              <span className="inv-nav__toggle-bar" />
-              <span className="inv-nav__toggle-bar" />
-              <span className="inv-nav__toggle-bar" />
+              <span className="inv-nav__toggle-bar d-block" />
+              <span className="inv-nav__toggle-bar d-block" />
+              <span className="inv-nav__toggle-bar d-block" />
             </button>
           </div>
         </div>
 
-        {/* Mobile and tablet navigation (below Bootstrap xl) */}
+        {/* Mobile and tablet navigation: below Bootstrap xl */}
         <div id="inv-mobile-menu" className={`inv-mobile d-xl-none${mobileOpen ? " is-open" : ""}`} aria-hidden={!mobileOpen} inert={!mobileOpen}>
-          <div className="inv-mobile__clip">
-            <div className="inv-mobile__scroll">
-              <ul className="inv-m__list d-grid">
+          <div className="inv-mobile__clip overflow-hidden">
+            <div className="inv-mobile__scroll overflow-y-auto">
+              <ul className="inv-m__list list-unstyled m-0 p-0 d-grid gap-1">
                 {NAV_ITEMS.map((item) => {
                   const active = isNavActive(item, location);
                   return hasMenu(item) ? (
                     <MobileAccordion key={item.id} item={item} open={mobileSection === item.id} active={active} onToggle={toggleSection} />
                   ) : (
                     <li key={item.id} className="inv-m__item">
-                      <Link to={item.to} className={activeClass("inv-m__link", active)} aria-current={active ? "page" : undefined}>
+                      <Link to={item.to} className={activeClass("inv-m__link d-flex align-items-center w-100", active)} aria-current={active ? "page" : undefined}>
                         {item.label}
                       </Link>
                     </li>
@@ -335,14 +340,8 @@ export default function Navbar() {
                 })}
 
                 <li className="inv-m__item">
-                  <Link to={LOGIN_ROUTE} className={activeClass("inv-m__link", isNavActive({ to: LOGIN_ROUTE }, location))}>
+                  <Link to={LOGIN_ROUTE} className={activeClass("inv-m__link d-flex align-items-center w-100", isNavActive({ to: LOGIN_ROUTE }, location))}>
                     Login
-                  </Link>
-                </li>
-
-                <li className="inv-m__item">
-                  <Link to={CTA.to} className={activeClass("inv-m__link", isNavActive(CTA, location))}>
-                    {CTA.label}
                   </Link>
                 </li>
               </ul>

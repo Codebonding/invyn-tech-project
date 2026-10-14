@@ -1,5 +1,7 @@
 import "../Hero/Hero.css";
-import heroVideo from '../../assets/videos/back2.mp4';
+import Button from "../common/Button";
+import { ROUTES } from "../../utils/constant";
+import heroVideo from "../../assets/videos/back2.mp4";
 
 function Hero() {
   return (
@@ -22,12 +24,8 @@ function Hero() {
       {/* Content */}
       <div className="container hero-content">
         <div className="row align-items-center min-vh-100">
-
           <div className="col-lg-8">
-
-            <span className="hero-badge">
-              INNOVATION • TECHNOLOGY • FUTURE
-            </span>
+            <span className="hero-badge">INNOVATION • TECHNOLOGY • FUTURE</span>
 
             <h1>
               Build. Innovate.
@@ -35,31 +33,24 @@ function Hero() {
             </h1>
 
             <p>
-              Empowering businesses and learners with modern
-              technology, AI solutions and industry-focused
-              digital experiences.
+              Empowering businesses and learners with modern technology, AI
+              solutions and industry-focused digital experiences.
             </p>
 
             <div className="hero-buttons">
-
-              <a href="/contact" className="hero-btn primary">
+              <Button href={ROUTES.contact} variant="primary" arrow>
                 Get Started
-              </a>
-
-              <a href="/courses" className="hero-btn glass">
+              </Button>
+              <Button href={ROUTES.courses} variant="glass">
                 Explore Courses
-              </a>
-
+              </Button>
             </div>
-
           </div>
-
         </div>
       </div>
 
       {/* Bottom Gradient */}
       <div className="hero-bottom-fade"></div>
-
     </section>
   );
 }

@@ -1,5 +1,5 @@
 export const servicesIntro = {
-  eyebrow: "WHAT WE DO",
+  eyebrow: "What we do",
   description:
     "From web development and custom software to AI-powered solutions and automation, INVYN TECH helps businesses turn technology into practical digital growth.",
 };

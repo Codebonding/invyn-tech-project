@@ -188,7 +188,7 @@
   bottom: 0;
   height: 60%;
   overflow: hidden;
-  opacity: 0.9;
+  opacity: 0.45;
 
   -webkit-mask-image:
     radial-gradient(
@@ -261,7 +261,7 @@
   top: 0;
   bottom: 0;
   width: min(27vw, 380px);
-  opacity: 0.9;
+  opacity: 0.35;
 
   -webkit-mask-image:
     linear-gradient(

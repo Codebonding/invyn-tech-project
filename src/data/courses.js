@@ -9,7 +9,7 @@ import CyberSecurity from "../assets/images/course-images/cybersecurity.png";
 
 
 export const coursesIntro = {
-  eyebrow: "LEARN WITH INVYN TECH",
+  eyebrow: "Learn with INVYN TECH",
   description:
     "Our practical technology courses are designed to help students and aspiring developers move from learning concepts to building real-world projects.",
 };

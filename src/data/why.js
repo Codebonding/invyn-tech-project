@@ -1,5 +1,5 @@
 export const whyIntro = {
-  eyebrow: "WHY INVYN TECH",
+  eyebrow: "Why INVYN TECH",
   description: "Practical training and real technology solutions, built on the same modern engineering practices.",
 };
 

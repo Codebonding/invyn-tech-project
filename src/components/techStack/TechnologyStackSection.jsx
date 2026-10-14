@@ -62,7 +62,7 @@ export default function TechnologyStackSection() {
                     onMouseLeave={() => setActiveId(null)}
                   >
                     <span className="inv-techcard__glyph" aria-hidden="true">
-                      {t.image ? <img src={t.image} alt="" width="26" height="26" loading="lazy" decoding="async" /> : t.glyph}
+                      {t.image ? <img src={t.image} alt="" width="44" height="44" loading="lazy" decoding="async" /> : t.glyph}
                     </span>
                     <div>
                       <h3 className="inv-techcard__name">{t.name}</h3>

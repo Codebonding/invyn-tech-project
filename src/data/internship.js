@@ -1,5 +1,5 @@
 export const internshipIntro = {
-  eyebrow: "START YOUR CAREER",
+  eyebrow: "Start Your Career",
   description:
     "INVYN TECH internships are designed to help learners apply technical knowledge through practical projects, development workflows, teamwork, and real-world implementation.",
   cta: {
