@@ -1,0 +1,28 @@
+/* ---------- 3D tilt + glare on cards marked data-tilt (mouse devices, motion allowed) ---------- */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .inv-glass-card[data-tilt].is-tilting {
+    transform: perspective(900px) translateY(-7px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 90ms ease-out, border-color 300ms ease, box-shadow 300ms ease;
+    box-shadow: var(--sx, 0px) var(--sy, 24px) 50px rgba(3, 31, 148, 0.3), 0 0 0 1px rgba(140, 214, 255, 0.18);
+    background:
+      radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), rgba(255, 255, 255, 0.14), transparent 60%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.01), rgba(11, 154, 240, 0.01));
+  }
+}
+
+/* ---------- Section titles swing into place in 3D as they scroll into view ----------
+   CSS scroll-driven animation (runs off the main thread). Browsers without support simply show the title normally. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .inv-section-heading {
+      transform-origin: 50% 100%;
+      animation: inv-depth-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+    @keyframes inv-depth-in {
+      from { transform: perspective(900px) translate3d(0, 28px, -140px) rotateX(24deg); }
+      to { transform: none; }
+    }
+  }
+}

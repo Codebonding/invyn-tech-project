@@ -1,3 +1,4 @@
+
 import AI from "../assets/images/AICourse/AI.png";
 import ML from "../assets/images/AICourse/ML.png";
 import CV from "../assets/images/AICourse/CV.png";
@@ -11,25 +12,107 @@ import Robo from "../assets/images/AICourse/Robo.png";
 import Edge from "../assets/images/AICourse/edge-Ai.png";
 import AIAgents from "../assets/images/AICourse/AI-Agents.png";
 
-
-
 export const technologiesIntro = {
   eyebrow: "AI Technologies",
   description:
-    "From modern web frameworks to AI and cloud tools, INVYN TECH works with practical, industry-relevant technologies for both technology solutions and technology training.",
+    "Explore the technologies shaping artificial intelligence, from machine learning and deep learning to generative AI, intelligent agents, computer vision, and real-world AI deployment.",
 };
 
 export const technologies = [
-  { id: "react", name: "React", image:AI, category: "Frontend", description: "Component-based interfaces for fast, maintainable web applications." },
-  { id: "javascript", name: "JavaScript", image:ML, category: "Frontend", description: "The language of the web, for interactive and full-stack development." },
-  { id: "python", name: "Python", image:DL, category: "Backend & AI", description: "A versatile language for automation, APIs, data work and AI." },
-  { id: "nodejs", name: "Node.js", image:LLM, category: "Backend", description: "A JavaScript runtime for scalable APIs and services." },
-  { id: "mysql", name: "MySQL", image:GAI, category: "Database", description: "A reliable relational database for structured business data." },
-  { id: "mongodb", name: "MongoDB", image:NLP, category: "Database", description: "A flexible document database for fast-moving applications." },
-  { id: "java", name: "Java", image:Robo, category: "Backend", description: "A robust, object-oriented platform for enterprise applications." },
-  { id: "ai", name: "AI", image:Edge, category: "AI & Data", description: "Machine learning and generative AI for intelligent applications." },
-  { id: "cloud", name: "Cloud", image:AIAgents, category: "Cloud & DevOps", description: "Scalable hosting, storage and deployment infrastructure." },
-  { id: "git", name: "Git", image:RAG, category: "Tools", description: "Version control and collaboration for every project." },
-  { id: "docker", name: "CV", image:CV, category: "Cloud & DevOps", description: "Containers for consistent builds and reliable deployments." },
-  { id: "ComputerVision", name: "CV", image:MLOps, category: "Cloud & DevOps", description: "Containers for consistent builds and reliable deployments." },
+  {
+    id: "artificial-intelligence",
+    name: "Artificial Intelligence",
+    image: AI,
+    category: "AI Fundamentals",
+    description:
+      "Build intelligent systems that analyze information, solve problems, automate tasks, and support decision-making.",
+  },
+  {
+    id: "machine-learning",
+    name: "Machine Learning",
+    image: ML,
+    category: "AI & Data",
+    description:
+      "Train algorithms to learn from data, recognize patterns, make predictions, and improve through experience.",
+  },
+  {
+    id: "computer-vision",
+    name: "Computer Vision",
+    image: CV,
+    category: "Visual AI",
+    description:
+      "Enable machines to interpret images and videos for object detection, image classification, and visual recognition.",
+  },
+  {
+    id: "deep-learning",
+    name: "Deep Learning",
+    image: DL,
+    category: "Neural Networks",
+    description:
+      "Explore multi-layer neural networks for complex pattern recognition, image processing, speech, and intelligent automation.",
+  },
+  {
+    id: "generative-ai",
+    name: "Generative AI",
+    image: GAI,
+    category: "Generative AI",
+    description:
+      "Create new text, images, code, and other content using generative models and modern AI techniques.",
+  },
+  {
+    id: "large-language-models",
+    name: "Large Language Models",
+    image: LLM,
+    category: "Language AI",
+    description:
+      "Understand language models that power conversational assistants, content generation, summarization, and coding tools.",
+  },
+  {
+    id: "retrieval-augmented-generation",
+    name: "RAG & Vector Databases",
+    image: RAG,
+    category: "AI Applications",
+    description:
+      "Connect language models with relevant external information to build context-aware question-answering applications.",
+  },
+  {
+    id: "natural-language-processing",
+    name: "Natural Language Processing",
+    image: NLP,
+    category: "Language AI",
+    description:
+      "Process and understand human language for chatbots, sentiment analysis, translation, and text classification.",
+  },
+  {
+    id: "mlops",
+    name: "MLOps",
+    image: MLOps,
+    category: "AI Engineering",
+    description:
+      "Manage the deployment, monitoring, versioning, and maintenance of machine learning models in production.",
+  },
+  {
+    id: "robotics",
+    name: "AI Robotics",
+    image: Robo,
+    category: "Intelligent Systems",
+    description:
+      "Combine AI, sensors, perception, and control systems to help robots interact with and navigate the physical world.",
+  },
+  {
+    id: "edge-ai",
+    name: "Edge AI",
+    image: Edge,
+    category: "AI Deployment",
+    description:
+      "Run AI models directly on devices for faster responses, reduced network dependence, and real-time processing.",
+  },
+  {
+    id: "ai-agents",
+    name: "AI Agents & Agentic AI",
+    image: AIAgents,
+    category: "Autonomous AI",
+    description:
+      "Build AI systems that can plan tasks, use tools, interact with other systems, and execute multi-step workflows.",
+  },
 ];

@@ -6,8 +6,8 @@ import { ROUTES } from "../utils/constant";
 export const LIVE = {
   about: true,    // "/#about" section on the homepage
   careers: false, // "/careers" page does not exist yet
-  privacy: false, // "/privacy-policy"
-  terms: false,   // "/terms-and-conditions"
+  privacy: true, // "/privacy-policy"
+  terms: true,   // "/terms-and-conditions"
 };
 const path = (flag, p) => (flag ? p : null);
 
@@ -39,7 +39,7 @@ export const footerColumns = [
       { label: "Services", to: ROUTES.services },
       { label: "Courses", to: ROUTES.courses },
       { label: "Internships", to: ROUTES.internships },
-      { label: "Careers", to: path(LIVE.careers, ROUTES.careers) },
+      // { label: "Careers", to: path(LIVE.careers, ROUTES.careers) },
       { label: "Contact", to: ROUTES.contact },
     ],
   },
@@ -64,6 +64,6 @@ export const footerColumns = [
 ];
 
 export const legalLinks = [
-  { label: "Privacy Policy", to: path(LIVE.privacy, "/privacy-policy") },
-  { label: "Terms & Conditions", to: path(LIVE.terms, "/terms-and-conditions") },
+  { label: "Privacy Policy", to: path(LIVE.privacy, ROUTES.privacy) },
+  { label: "Terms & Conditions", to: path(LIVE.terms, ROUTES.terms) },
 ];

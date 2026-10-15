@@ -10,11 +10,17 @@ import CourseEnrollPage from "./pages/CourseEnrollPage";
 import ServicesPage from "./pages/ServicesPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import ServiceEnquiryPage from "./pages/ServiceEnquiryPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import TermsPage from "./pages/TermsPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ScrollBar3D from "./components/animation/ScrollBar3D";
+import useTilt3D from "./hooks/useTilt3D";
 import { useSectionScroll } from "./utils/scroll";
+import "./styles/effects-3d.css";
 
 export default function App() {
   useSectionScroll();
+  useTilt3D();
   return (
     <>
       <AnimatedBackground />
@@ -27,9 +33,12 @@ export default function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/:slug" element={<ServiceDetailPage />} />
         <Route path="/services/:slug/enquiry" element={<ServiceEnquiryPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-and-conditions" element={<TermsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
+      <ScrollBar3D />
     </>
   );
 }

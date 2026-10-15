@@ -1,0 +1,24 @@
+/* Privacy Policy and Terms pages. Layout, sections, lists and sticky panel reuse course-pages.css. */
+.inv-legal__meta { margin: 0 0 12px; color: var(--inv-text-muted, #B9C8DC); font-size: var(--inv-fs-sm, .875rem); }
+.inv-legal .inv-cd__section { scroll-margin-top: calc(var(--nav-h, 76px) + 16px); }
+
+.inv-legal__toc { list-style: decimal; margin: 14px 0 0; padding-left: 22px; display: grid; gap: 2px; }
+.inv-legal__toc li::marker { color: var(--inv-text-muted, #B9C8DC); font-size: var(--inv-fs-sm, .875rem); }
+.inv-legal__toc a {
+  display: block;
+  padding: 5px 8px;
+  border-radius: var(--inv-r-sm, 12px);
+  color: var(--inv-text-muted, #B9C8DC);
+  font-size: var(--inv-fs-sm, .875rem);
+  text-decoration: none;
+  transition: color .2s, background-color .2s;
+}
+.inv-legal__toc a:hover,
+.inv-legal__toc a:focus-visible { color: #fff; background: rgba(140, 214, 255, .1); }
+
+.inv-legal__contact { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; color: var(--inv-text-muted, #B9C8DC); }
+.inv-legal__other { margin: 8px 0 0; padding-top: 18px; border-top: 1px solid rgba(140, 214, 255, .16); color: var(--inv-text-muted, #B9C8DC); }
+
+@media (max-width: 991.98px) {
+  .inv-legal .inv-cd__aside { position: static; }
+}

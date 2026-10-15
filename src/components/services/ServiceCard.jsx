@@ -6,7 +6,7 @@ import { ROUTES } from "../../utils/constant";
 
 export default function ServiceCard({ id, title, description, summary, icon, href = ROUTES.services }) {
   return (
-    <GlassCard as="article" className="inv-card inv-service-card">
+    <GlassCard as="article" className="inv-card inv-service-card" data-tilt>
       <div className="inv-card__top">
         <span className="inv-card__icon"><Icon name={icon} /></span>
         <span className="inv-card__num">{pad2(id)}</span>
