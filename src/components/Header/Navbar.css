@@ -13,7 +13,7 @@
   --nav-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --nav-h: 64px;
   --nav-pad: clamp(20px, 4vw, 64px); /* padding of the CONTENT; the glass itself is edge to edge */
-  --nav-plate: rgba(255, 255, 255, 0.96); /* logo plate; set to transparent if you use a light logo */
+  --nav-plate: rgba(255, 255, 255, 0.01); /* logo plate; set to transparent if you use a light logo */
 }
 
 /* ---------- 2. Wrapper and glass ---------- */
@@ -68,7 +68,7 @@
 }
 
 /* ---------- 4. Brand / logo ---------- */
-.inv-nav .inv-brand {
+.inv-nav  {
   min-width: 50px;
   padding: 5px 12px;
   border-radius: 50%;
@@ -77,7 +77,7 @@
   text-decoration: none;
   transition: transform 0.3s var(--nav-ease);
 }
-.inv-nav .inv-brand:hover { transform: translateY(-1px); }
+.inv-nav  { transform: translateY(-1px); }
 .inv-brand__img {
   display: block;
   width: auto;

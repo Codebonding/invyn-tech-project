@@ -23,6 +23,7 @@ export default function App() {
   useTilt3D();
   return (
     <>
+
       <AnimatedBackground />
       <Header />
       <Routes>
