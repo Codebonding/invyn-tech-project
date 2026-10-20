@@ -1,8 +1,8 @@
 import Container from "../components/common/Container";
 import GradientText from "../components/common/GradientText";
 import Breadcrumbs from "../components/common/Breadcrumbs";
-import ServiceGrid from "../components/services/ServiceGrid";
-import ServiceCta from "../components/services/ServiceCta";
+import ServiceGrid from "../components/services-p/ServiceGrid";
+import ServiceCta from "../components/services-p/ServiceCta";
 import usePageSeo from "../hooks/usePageSeo";
 import { ROUTES } from "../utils/constant";
 import { allServices } from "../utils/services-page";

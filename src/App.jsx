@@ -14,7 +14,14 @@ import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsPage from "./pages/TermsPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import ScrollBar3D from "./components/animation/ScrollBar3D";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import AccountPage from "./pages/AccountPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import SessionBootstrap from "./components/auth/SessionBootstrap";
 import useTilt3D from "./hooks/useTilt3D";
+import SetupAccountPage from "./pages/SetupAccountPage";
+import AdminEmployeesPage from "./pages/AdminEmployeesPage";
 import { useSectionScroll } from "./utils/scroll";
 import "./styles/effects-3d.css";
 
@@ -23,7 +30,7 @@ export default function App() {
   useTilt3D();
   return (
     <>
-
+       <SessionBootstrap />
       <AnimatedBackground />
       <Header />
       <Routes>
@@ -36,7 +43,13 @@ export default function App() {
         <Route path="/services/:slug/enquiry" element={<ServiceEnquiryPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-and-conditions" element={<TermsPage />} />
+         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
+        <Route path="/setup-account" element={<SetupAccountPage />} />
+        <Route path="/admin/employees" element={<ProtectedRoute roles={["admin"]}><AdminEmployeesPage /></ProtectedRoute>} />
         <Route path="*" element={<NotFoundPage />} />
+
       </Routes>
       <Footer />
       <ScrollBar3D />

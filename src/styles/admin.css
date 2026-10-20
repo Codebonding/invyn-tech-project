@@ -1,0 +1,30 @@
+.inv-admin { max-width: 1080px; margin: 0 auto; padding: 1rem 0 4rem; }
+.inv-admin__bar { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+.inv-admin__filters { display: flex; gap: .75rem; align-items: center; }
+.inv-admin__filters select { min-width: 10rem; }
+
+.inv-admin__panel { border: 1px solid rgba(128,128,128,.35); border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; background: rgba(128,128,128,.08); }
+.inv-admin__panel h2 { font-size: 1.1rem; margin: 0 0 .5rem; }
+.inv-admin__panel p { margin: 0 0 .75rem; }
+.inv-admin__panel--warn { border-color: rgba(224,164,58,.7); }
+.inv-admin__panel--error { border-color: rgba(239,106,91,.7); }
+.inv-admin__copy { display: flex; gap: .5rem; flex-wrap: wrap; }
+.inv-admin__copy input { flex: 1 1 18rem; min-width: 0; }
+.inv-admin__row-actions { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .75rem; }
+
+.inv-admin__tablewrap { overflow-x: auto; border: 1px solid rgba(128,128,128,.35); border-radius: 12px; }
+.inv-admin__table { width: 100%; min-width: 760px; border-collapse: collapse; }
+.inv-admin__table th, .inv-admin__table td { padding: .75rem 1rem; text-align: left; vertical-align: middle; border-bottom: 1px solid rgba(128,128,128,.25); }
+.inv-admin__table tbody tr:last-child td { border-bottom: 0; }
+.inv-admin__table th { font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; opacity: .75; }
+.inv-admin__actions { display: flex; flex-wrap: wrap; gap: .4rem; }
+.inv-admin__muted { opacity: .7; }
+
+.inv-admin__badge { display: inline-block; padding: .15rem .65rem; border-radius: 999px; font-size: .8rem; font-weight: 600; border: 1px solid currentColor; text-transform: capitalize; }
+.inv-admin__badge--active { color: #2fbf71; }
+.inv-admin__badge--invited { color: #e0a43a; }
+.inv-admin__badge--inactive, .inv-admin__badge--suspended { color: #ef6a5b; }
+
+.inv-admin__pager { display: flex; gap: .75rem; align-items: center; justify-content: flex-end; margin-top: 1rem; }
+.inv-admin__empty { padding: 2rem 1rem; text-align: center; opacity: .8; }
+.inv-admin__danger { color: #ef6a5b; border-color: rgba(239,106,91,.7); }

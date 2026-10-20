@@ -107,6 +107,7 @@ export const CTA = {
   to: ROUTES.contact,
 };
 export const LOGIN_ROUTE = ROUTES.login;
+export const ACCOUNT_ROUTE = ROUTES.account;
 export const DESKTOP_QUERY = "(min-width: 1200px)"; // Bootstrap "xl": must match the d-xl-* classes used in Navbar.jsx
 
 /** NavLink ignores "?query", so "/?section=about" would be active on every home view. Match path and section ourselves. */
@@ -118,3 +119,8 @@ export function isNavActive(item, { pathname, search }) {
   if (item.end) return pathname === path && !current;
   return pathname === path || pathname.startsWith(`${path}/`);
 }
+/** Shown instead of NAV_ITEMS when the signed-in user is an Admin (the server still enforces every permission). */
+export const ADMIN_NAV_ITEMS = [
+  { id: "admin-employees", label: "Employees", to: ROUTES.adminEmployees },
+  { id: "admin-site", label: "View website", to: ROUTES.home, end: true },
+];

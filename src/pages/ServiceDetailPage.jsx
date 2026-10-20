@@ -4,7 +4,7 @@ import Container from "../components/common/Container";
 import Breadcrumbs from "../components/common/Breadcrumbs";
 import Icon from "../components/common/Icon";
 import { Section, List, Pills, Steps } from "../components/common/DetailBlocks";
-import ServiceGrid from "../components/services/ServiceGrid";
+import ServiceGrid from "../components/services-p/ServiceGrid";
 import NotFoundPage from "./NotFoundPage";
 import usePageSeo from "../hooks/usePageSeo";
 import { setJsonLd } from "../utils/seo";

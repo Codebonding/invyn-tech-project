@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import CompanyIntro from "./company/CompanyIntro";
-import ServicesSection from "../components/services/ServiceSection";
+import ServicesSection from "./services-p/ServiceSection";
 import CoursesSection from "./courses/CoursesSection";
 import InternshipSection from "./internship/InternshipSection";
 import TechnologyStackSection from "./techStack/TechnologyStackSection";

@@ -1,11 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/invyn-logo.png";
 
+import useAuth from "../../hooks/useAuth";
+import { useLogoutUserMutation } from "../../services/authApi";
 import {
   NAV_ITEMS,
+  ADMIN_NAV_ITEMS,
   CTA,
   LOGIN_ROUTE,
+  ACCOUNT_ROUTE,
   DESKTOP_QUERY,
   isNavActive,
 } from "../../utils/navData";
@@ -174,6 +178,21 @@ function MobileAccordion({ item, open, active, onToggle }) {
 export default function Navbar() {
   const location = useLocation();
   const { key: locationKey } = location;
+  const navigate = useNavigate();
+  const { user, isAuthenticated } = useAuth();
+  const isAdmin = user?.role === "admin";
+  const navItems = isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS;
+  const [logoutUser, { isLoading: loggingOut }] = useLogoutUserMutation();
+  const onLogout = async () => {
+    try {
+      await logoutUser().unwrap();
+    } catch {
+      /* the local session is cleared either way (see authApi.logoutUser) */
+    }
+    navigate("/", { replace: true });
+  };
+  const authRoute = isAuthenticated ? ACCOUNT_ROUTE : LOGIN_ROUTE;
+  const authLabel = isAuthenticated ? "Account" : "Login";
 
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -273,7 +292,7 @@ export default function Navbar() {
 
           {/* Desktop navigation: Bootstrap xl and up */}
           <ul className="inv-nav__links list-unstyled m-0 p-0 d-none d-xl-flex align-items-center justify-content-center flex-grow-1 gap-1">
-            {NAV_ITEMS.map((item) => {
+            {navItems.map((item) => {
               const active = isNavActive(item, location);
               return hasMenu(item) ? (
                 <DesktopDropdown
@@ -297,13 +316,19 @@ export default function Navbar() {
 
           {/* Actions: always visible, pushed to the right edge */}
           <div className="inv-nav__actions d-flex align-items-center gap-2 flex-shrink-0 ms-auto">
-            <Link to={LOGIN_ROUTE} className="inv-btn inv-btn--glass inv-btn--sm text-nowrap d-none d-xl-inline-flex">
-              Login
+            <Link to={authRoute} className="inv-btn inv-btn--glass inv-btn--sm text-nowrap d-none d-xl-inline-flex">
+              {authLabel}
             </Link>
 
-            <Link to={CTA.to} className="inv-btn inv-btn--primary inv-btn--sm text-nowrap">
-              {CTA.label}
-            </Link>
+            {isAdmin ? (
+              <button type="button" className="inv-btn inv-btn--primary inv-btn--sm text-nowrap" onClick={onLogout} disabled={loggingOut}>
+                {loggingOut ? "Logging out…" : "Log out"}
+              </button>
+            ) : (
+              <Link to={CTA.to} className="inv-btn inv-btn--primary inv-btn--sm text-nowrap">
+                {CTA.label}
+              </Link>
+            )}
 
             <button
               ref={toggleRef}
@@ -326,7 +351,7 @@ export default function Navbar() {
           <div className="inv-mobile__clip overflow-hidden">
             <div className="inv-mobile__scroll overflow-y-auto">
               <ul className="inv-m__list list-unstyled m-0 p-0 d-grid gap-1">
-                {NAV_ITEMS.map((item) => {
+                {navItems.map((item) => {
                   const active = isNavActive(item, location);
                   return hasMenu(item) ? (
                     <MobileAccordion key={item.id} item={item} open={mobileSection === item.id} active={active} onToggle={toggleSection} />
@@ -340,8 +365,8 @@ export default function Navbar() {
                 })}
 
                 <li className="inv-m__item">
-                  <Link to={LOGIN_ROUTE} className={activeClass("inv-m__link d-flex align-items-center w-100", isNavActive({ to: LOGIN_ROUTE }, location))}>
-                    Login
+                  <Link to={authRoute} className={activeClass("inv-m__link d-flex align-items-center w-100", isNavActive({ to: authRoute }, location))}>
+                    {authLabel}
                   </Link>
                 </li>
               </ul>

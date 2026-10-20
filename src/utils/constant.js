@@ -24,9 +24,13 @@ export const ROUTES = {
   testimonials: "/?section=testimonials",
   contact: "/?section=cta",
   careers: "/careers",
-  login: "/login",
+   login: "/login",
+  register: "/register",
+  account: "/account",
   privacy: "/privacy-policy",
   terms: "/terms-and-conditions",
+  setupAccount: "/setup-account",
+  adminEmployees: "/admin/employees"
 };
 
 export const getCourseRoute = (slug) => `/courses/${slug}`;

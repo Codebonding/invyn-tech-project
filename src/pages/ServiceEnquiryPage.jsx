@@ -1,6 +1,6 @@
 import Container from "../components/common/Container";
 import Breadcrumbs from "../components/common/Breadcrumbs";
-import ServiceEnquiryForm from "../components/services/ServiceEnquiryForm";
+import ServiceEnquiryForm from "../components/services-p/ServiceEnquiryForm";
 import NotFoundPage from "./NotFoundPage";
 import { useParams } from "react-router-dom";
 import usePageSeo from "../hooks/usePageSeo";
