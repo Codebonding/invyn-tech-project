@@ -22,7 +22,11 @@ import SessionBootstrap from "./components/auth/SessionBootstrap";
 import useTilt3D from "./hooks/useTilt3D";
 import SetupAccountPage from "./pages/SetupAccountPage";
 import AdminEmployeesPage from "./pages/AdminEmployeesPage";
+import AdminDashboardPage from "./pages/AdminDashboardPage";
 import { useSectionScroll } from "./utils/scroll";
+import AdminEnquiriesPage from "./pages/AdminEnquiriesPage";
+import ChatbotWidget from "./components/chatbot/ChatbotWidget";
+
 import "./styles/effects-3d.css";
 
 export default function App() {
@@ -31,6 +35,7 @@ export default function App() {
   return (
     <>
        <SessionBootstrap />
+       <ChatbotWidget />
       <AnimatedBackground />
       <Header />
       <Routes>
@@ -48,6 +53,8 @@ export default function App() {
         <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
         <Route path="/setup-account" element={<SetupAccountPage />} />
         <Route path="/admin/employees" element={<ProtectedRoute roles={["admin"]}><AdminEmployeesPage /></ProtectedRoute>} />
+<Route path="/admin/enquiries" element={<ProtectedRoute roles={["admin"]}><AdminEnquiriesPage /></ProtectedRoute>} />
+<Route path="/admin" element={<ProtectedRoute roles={["admin"]}><AdminDashboardPage /></ProtectedRoute>} />
         <Route path="*" element={<NotFoundPage />} />
 
       </Routes>

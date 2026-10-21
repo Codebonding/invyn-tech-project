@@ -30,7 +30,9 @@ export const ROUTES = {
   privacy: "/privacy-policy",
   terms: "/terms-and-conditions",
   setupAccount: "/setup-account",
-  adminEmployees: "/admin/employees"
+  adminEmployees: "/admin/employees",
+  adminEnquiries: "/admin/enquiries",
+  adminDashboard: "/admin",
 };
 
 export const getCourseRoute = (slug) => `/courses/${slug}`;

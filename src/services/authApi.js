@@ -1,11 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import axiosBaseQuery from "./axiosBaseQuery";
 import { employeesApi } from "./employeesApi";
+import { dashboardApi } from "./dashboardApi";
+import { enquiryApi } from "./enquiryApi";
 
-/**
- * All authentication API state lives here. The signed-in user's safe public profile is the cached
- * result of `getCurrentUser`; login writes it into that cache and logout wipes the whole cache.
- */
 export const authApi = createApi({
   reducerPath: "authApi",
   baseQuery: axiosBaseQuery(),
@@ -44,6 +42,8 @@ export const authApi = createApi({
         } finally {
           dispatch(authApi.util.resetApiState());
           dispatch(employeesApi.util.resetApiState());
+          dispatch(dashboardApi.util.resetApiState());
+          dispatch(enquiryApi.util.resetApiState());
         }
       },
     }),

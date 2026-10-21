@@ -1,0 +1,52 @@
+/* Self-contained (white card) so it looks the same on every page and theme. */
+.cb-launcher, .cb-panel { --cb-primary: #031F94; --cb-accent: #0B9AF0; --cb-ink: #122B44; font-family: inherit; }
+.cb-launcher { position: fixed; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom)); z-index: 1060; width: 58px; height: 58px; border: 0; border-radius: 50%; display: grid; place-items: center; color: #fff; cursor: pointer; background: linear-gradient(135deg, #031F94, #0B9AF0); box-shadow: 0 8px 24px rgba(3,31,148,.35); transition: transform .15s ease; }
+.cb-launcher:hover { transform: scale(1.06); }
+.cb-launcher:focus-visible, .cb-chip:focus-visible, .cb-btn:focus-visible, .cb-icon:focus-visible, .cb-input input:focus-visible, .cb-form :is(input, select, textarea):focus-visible { outline: 3px solid #0B9AF0; outline-offset: 2px; }
+
+.cb-panel { position: fixed; right: max(1rem, env(safe-area-inset-right)); bottom: calc(max(1rem, env(safe-area-inset-bottom)) + 70px); z-index: 1060; width: min(380px, calc(100vw - 2rem)); height: min(580px, calc(100dvh - 7rem)); display: flex; flex-direction: column; overflow: hidden; background: #fff; color: var(--cb-ink); border-radius: 18px; box-shadow: 0 18px 48px rgba(0,0,0,.28); font-size: .95rem; }
+.cb-header { display: flex; justify-content: space-between; align-items: center; gap: .5rem; padding: .85rem 1rem; color: #fff; background: linear-gradient(135deg, #031F94, #0B9AF0); }
+.cb-header div { display: grid; line-height: 1.25; }
+.cb-header span { font-size: .78rem; opacity: .85; }
+.cb-icon { border: 0; background: transparent; color: #fff; font-size: 1.6rem; line-height: 1; cursor: pointer; padding: 0 .35rem; }
+
+.cb-log { flex: 1; overflow-y: auto; padding: .85rem; display: flex; flex-direction: column; gap: .6rem; background: #f4f7fb; overscroll-behavior: contain; }
+.cb-msg { max-width: 88%; padding: .6rem .8rem; border-radius: 14px; word-wrap: break-word; }
+.cb-msg p { margin: 0 0 .3rem; } .cb-msg p:last-child { margin: 0; }
+.cb-msg--bot { align-self: flex-start; background: #fff; border: 1px solid #dbe3ee; border-bottom-left-radius: 4px; }
+.cb-msg--user { align-self: flex-end; color: #fff; background: var(--cb-primary); border-bottom-right-radius: 4px; }
+.cb-links { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .5rem; }
+.cb-link { padding: .25rem .65rem; border-radius: 999px; border: 1px solid var(--cb-accent); color: var(--cb-primary); background: #eef7ff; text-decoration: none; font-size: .85rem; }
+.cb-link:hover { background: #dff0ff; }
+
+.cb-quick { display: flex; gap: .4rem; padding: .55rem .75rem; overflow-x: auto; background: #fff; border-top: 1px solid #e5ebf3; scrollbar-width: thin; }
+.cb-chip { flex: 0 0 auto; padding: .35rem .75rem; border: 1px solid var(--cb-accent); border-radius: 999px; background: #fff; color: var(--cb-primary); font: inherit; font-size: .85rem; cursor: pointer; white-space: nowrap; }
+.cb-chip:hover { background: #eef7ff; }
+.cb-input { display: flex; gap: .5rem; padding: .65rem .75rem; background: #fff; border-top: 1px solid #e5ebf3; }
+.cb-input input { flex: 1; min-width: 0; padding: .55rem .75rem; border: 1px solid #c4cfdd; border-radius: 10px; font: inherit; color: var(--cb-ink); }
+.cb-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.cb-btn { padding: .5rem .9rem; border: 1px solid #c4cfdd; border-radius: 10px; background: #fff; color: var(--cb-ink); font: inherit; cursor: pointer; }
+.cb-btn--primary { border-color: var(--cb-primary); background: var(--cb-primary); color: #fff; }
+.cb-btn:disabled { opacity: .55; cursor: not-allowed; }
+
+.cb-form { align-self: stretch; padding: .85rem; border: 1px solid #dbe3ee; border-radius: 14px; background: #fff; display: grid; gap: .6rem; }
+.cb-field { display: grid; gap: .2rem; }
+.cb-field label { font-size: .82rem; font-weight: 600; }
+.cb-form :is(input:not([type="checkbox"]), select, textarea) { width: 100%; padding: .5rem .65rem; border: 1px solid #c4cfdd; border-radius: 8px; font: inherit; color: var(--cb-ink); background: #fff; }
+.cb-form [aria-invalid="true"] { border-color: #c62828; }
+.cb-error { margin: 0; color: #c62828; font-size: .8rem; }
+.cb-consent { display: flex; gap: .5rem; align-items: flex-start; font-size: .8rem; }
+.cb-consent input { margin-top: .2rem; flex: 0 0 auto; }
+.cb-consent a { color: var(--cb-primary); }
+.cb-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.cb-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Phones: full-screen sheet so the keyboard and form have room. */
+@media (max-width: 576px) {
+  .cb-panel { inset: 0; width: 100%; height: 100dvh; border-radius: 0; padding-bottom: env(safe-area-inset-bottom); }
+  .cb-msg { max-width: 94%; }
+  .cb-launcher { width: 54px; height: 54px; }
+  .cb-input input, .cb-form :is(input, select, textarea) { font-size: 16px; } /* stops iOS zooming on focus */
+}
+@media (prefers-reduced-motion: reduce) { .cb-launcher { transition: none; } .cb-launcher:hover { transform: none; } }
