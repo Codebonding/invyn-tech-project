@@ -1,4 +1,3 @@
-import { courses } from "./courses";
 import { allServices } from "../utils/services-page";
 import { ROUTES } from "../utils/constant";
 
@@ -51,7 +50,7 @@ export const footerColumns = [
   {
     id: "courses",
     title: "Courses",
-    links: courses.map((c) => ({ label: c.title, to: c.href })),
+    links: [{ label: "All courses", to: ROUTES.courses }],
   },
   {
     id: "internships",

@@ -31,4 +31,13 @@
   --inv-r-md: 16px;
   --inv-r-lg: 24px;
   --inv-r-pill: 999px;
+    /* Scrollbar design. ONE source: the page scrollbar (ScrollBar3D.css) and the chatbot conversation both use these. */
+  --inv-sb-rail: linear-gradient(180deg, rgba(3, 31, 148, 0.3), rgba(3, 51, 183, 0.18) 50%, rgba(11, 154, 240, 0.26));
+  --inv-sb-rail-rim: inset 1px 0 0 rgba(255, 255, 255, 0.16);
+  --inv-sb-thumb: linear-gradient(180deg, #8cd6ff, #0b9af0 45%, #0333b7);
+  --inv-sb-thumb-hover: linear-gradient(180deg, #a6e1ff, #2eb1ff 45%, #0a45cf);
+  --inv-sb-thumb-border: 1.5px solid rgba(255, 255, 255, 0.85);
+  --inv-sb-thumb-shadow: 0 3px 8px rgba(2, 8, 24, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  --inv-sb-thumb-color: #0b9af0;   /* Firefox can only draw flat colours */
+  --inv-sb-track-color: rgba(3, 31, 148, 0.3);
 }

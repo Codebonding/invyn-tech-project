@@ -24,7 +24,7 @@ export function monthsOf(c) {
   return u === "week" ? n / 4.345 : u === "year" ? n * 12 : n;
 }
 
-export const modesOf = (c) => String(c.mode || "").split(/[\/,&]| and /i).map((s) => s.trim()).filter(Boolean);
+export const modesOf = (c) => String(c.mode || "").split(/[/,&]| and /i).map((s) => s.trim()).filter(Boolean);
 
 const unique = (arr) => [...new Set(arr)].sort((a, b) => a.localeCompare(b));
 

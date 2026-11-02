@@ -7,19 +7,3 @@
 @import "../src/styles/tech-why.css";
 @import "../src/styles/course-pages.css";
 @import "../src/styles/service-pages.css";
- 
-/* body {
-  background:
-    radial-gradient(
-      circle at 20% 10%,
-      rgba(0, 174, 255, 0.12),
-      transparent 30%
-    ),
-    linear-gradient(
-      135deg,
-      #001020 0%,
-      #001F50 40%,
-      #002F91 75%,
-      #00143D 100%
-    );
-} */

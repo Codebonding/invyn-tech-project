@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import Container from "../components/common/Container";
 import Breadcrumbs from "../components/common/Breadcrumbs";
@@ -6,21 +7,24 @@ import { Section, List } from "../components/common/DetailBlocks";
 import CourseCard from "../components/courses/CourseCard";
 import CourseNotFound from "../components/courses/CourseNotFound";
 import usePageSeo from "../hooks/usePageSeo";
+import useAllCourses from "../hooks/useAllCourses";
+import { useGetPublicCourseQuery } from "../services/publicCoursesApi";
+import { toCardCourse } from "../utils/liveCourses";
 import { ROUTES } from "../utils/constant";
-import { enrollHref, feeLabel, getCourseBySlug, getDetail, getRelated, hasKnownFee, trimText } from "../utils/courses";
+import { enrollHref, feeLabel, getRelated, hasKnownFee, trimText } from "../utils/courses";
 import "../styles/course-pages.css";
 
 const CERTIFICATE_FALLBACK = "Certificate details are confirmed by INVYN TECH. Please contact us to learn what is offered for this course.";
 
-
-function Details({ course, detail }) {
+function Details({ course }) {
+  const { courses } = useAllCourses();
   const faqs = [
-    ...(detail?.faqs || []),
+    ...course.faqs,
     { q: "How much does this course cost?", a: hasKnownFee(course) ? `The listed fee is ${feeLabel(course)}.` : "Fee details are shared by INVYN TECH on request. Please contact us for the current fee." },
     { q: "Can I learn online or on campus?", a: `Learning mode for this course: ${course.mode}.` },
     { q: "How do I enrol?", a: "Select Enrol Now to start. The enrolment form is currently a preview, so to confirm a place please contact INVYN TECH through the Contact page." },
   ];
-  const related = getRelated(course);
+  const related = getRelated(course, 3, courses);
 
   return (
     <>
@@ -41,13 +45,13 @@ function Details({ course, detail }) {
 
       <div className="row g-4 g-xl-5">
         <div className="col-12 col-lg-8">
-          {detail?.outcomes && <Section id="cd-outcomes" title="What you will learn"><List items={detail.outcomes} /></Section>}
+          {course.outcomes.length > 0 && <Section id="cd-outcomes" title="What you will learn"><List items={course.outcomes} /></Section>}
 
           <Section id="cd-curriculum" title="Course curriculum">
-            {detail?.curriculum?.length ? (
+            {course.curriculum.length > 0 ? (
               <div className="inv-acc">
-                {detail.curriculum.map((m, i) => (
-                  <details key={m.title} open={i === 0}>
+                {course.curriculum.map((m, i) => (
+                  <details key={`${i}-${m.title}`} open={i === 0}>
                     <summary><span><b>Module {i + 1}</b> {m.title}</span><small>{m.topics.length} topics</small></summary>
                     <List items={m.topics} />
                   </details>
@@ -56,23 +60,25 @@ function Details({ course, detail }) {
             ) : <p className="inv-cd__muted">The detailed curriculum for this course will be shared soon. Contact INVYN TECH for the current outline.</p>}
           </Section>
 
-          <Section id="cd-tech" title="Technologies covered">
-            <ul className="inv-pills" aria-label="Technologies">{course.technologies.map((t) => <li className="inv-pill" key={t}>{t}</li>)}</ul>
-          </Section>
+          {course.technologies.length > 0 && (
+            <Section id="cd-tech" title="Technologies covered">
+              <ul className="inv-pills" aria-label="Technologies">{course.technologies.map((t) => <li className="inv-pill" key={t}>{t}</li>)}</ul>
+            </Section>
+          )}
 
-          {detail?.projects && <Section id="cd-projects" title="Practical projects"><List items={detail.projects} /></Section>}
+          {course.projects.length > 0 && <Section id="cd-projects" title="Practical projects"><List items={course.projects} /></Section>}
 
           <Section id="cd-eligibility" title="Eligibility and prerequisites">
-            <p>{detail?.eligibility || "Contact INVYN TECH to check whether this course suits your background."}</p>
-            {detail?.prerequisites?.length > 0 && <List items={detail.prerequisites} />}
+            <p>{course.eligibility || "Contact INVYN TECH to check whether this course suits your background."}</p>
+            {course.prerequisites.length > 0 && <List items={course.prerequisites} />}
           </Section>
 
-          <Section id="cd-cert" title="Certificate"><p>{detail?.certificate || CERTIFICATE_FALLBACK}</p></Section>
+          <Section id="cd-cert" title="Certificate"><p>{course.certificate || CERTIFICATE_FALLBACK}</p></Section>
 
           <Section id="cd-faq" title="Frequently asked questions">
             <div className="inv-acc">
-              {faqs.map((f) => (
-                <details key={f.q}><summary><span>{f.q}</span></summary><p>{f.a}</p></details>
+              {faqs.map((f, i) => (
+                <details key={`${i}-${f.q}`}><summary><span>{f.q}</span></summary><p>{f.a}</p></details>
               ))}
             </div>
           </Section>
@@ -110,19 +116,21 @@ function Details({ course, detail }) {
 
 export default function CourseDetailPage() {
   const { slug } = useParams();
-  const course = getCourseBySlug(slug);
+  const { data, isLoading } = useGetPublicCourseQuery(slug, { refetchOnMountOrArgChange: true });
+  const course = useMemo(() => (data ? toCardCourse(data) : null), [data]);
   usePageSeo(
     course
       ? { title: `${course.title} Course | INVYN TECH`, description: trimText(course.description), path: course.href }
       : { title: "Course not found | INVYN TECH", description: "This course could not be found.", path: `/courses/${slug}` },
-    [slug]
+    [slug, course?.title]
   );
+  if (!course && isLoading) return <div className="inv-page"><Container><p role="status">Loading course…</p></Container></div>;
   if (!course) return <CourseNotFound />;
   return (
     <div className="inv-page">
       <Container>
         <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Courses", to: ROUTES.courses }, { label: course.title }]} />
-        <Details course={course} detail={getDetail(slug)} />
+        <Details course={course} />
       </Container>
     </div>
   );

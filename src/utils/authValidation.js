@@ -68,4 +68,13 @@ export function validateEmployee({ name = "", email = "" }) {
   if (found.name) errors.name = found.name;
   if (found.email) errors.email = found.email;
   return errors;
+}export function validateChangePassword({ currentPassword = "", newPassword = "", confirmNewPassword = "" }) {
+  const errors = {};
+  if (!currentPassword) errors.currentPassword = "Enter your current password.";
+
+  const policy = validateRegistration({ name: "ok", email: "a@b.co", password: newPassword, confirmPassword: confirmNewPassword });
+  if (policy.password) errors.newPassword = policy.password;
+  else if (newPassword === currentPassword) errors.newPassword = "New password must be different from the current password.";
+  if (policy.confirmPassword) errors.confirmNewPassword = policy.confirmPassword;
+  return errors;
 }

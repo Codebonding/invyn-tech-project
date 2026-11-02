@@ -20,8 +20,7 @@ export default function CTASection() {
     onFocus: () => { hotRef.current = true; },
     onBlur: () => { hotRef.current = false; },
   };
-  const paths = c.paths.filter((p) => ROUTES[p.route]); // never render a link without a real route
-
+ 
   return (
     <section ref={sectionRef} id="get-started" className="inv-cta3d" aria-labelledby="cta-title">
       {c.image && <img className="inv-cta3d__img" src={c.image} alt={c.imageAlt} loading="lazy" decoding="async" />}

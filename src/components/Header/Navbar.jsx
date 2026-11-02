@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/invyn-logo.png";
 
 import useAuth from "../../hooks/useAuth";
+import useAllCourses from "../../hooks/useAllCourses";
 import { useLogoutUserMutation } from "../../services/authApi";
 import {
   NAV_ITEMS,
@@ -181,7 +182,21 @@ export default function Navbar() {
   const navigate = useNavigate();
   const { user, isAuthenticated } = useAuth();
   const isAdmin = user?.role === "admin";
-  const navItems = isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS;
+
+  // ---- live Courses menu: replaces `const navItems = isAdmin ? ADMIN_NAV_ITEMS : NAV_ITEMS;` ----
+  const { courses } = useAllCourses();
+
+  const courseItems = useMemo(
+    () => courses.map((c) => ({ label: c.shortTitle || c.title, to: c.href, desc: `${c.category} · ${c.duration}` })),
+    [courses]
+  );
+
+  const navItems = useMemo(() => {
+    if (isAdmin) return ADMIN_NAV_ITEMS;
+    return NAV_ITEMS.map((item) => (item.id === "courses" && courseItems.length ? { ...item, items: courseItems } : item));
+  }, [isAdmin, courseItems]);
+  // ---- end of live Courses menu ----
+
   const [logoutUser, { isLoading: loggingOut }] = useLogoutUserMutation();
   const onLogout = async () => {
     try {

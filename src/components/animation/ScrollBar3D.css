@@ -20,10 +20,10 @@
   right: 0;
   width: 6px;
   cursor: pointer;
-  background: linear-gradient(180deg, rgba(3, 31, 148, 0.3), rgba(3, 51, 183, 0.18) 50%, rgba(11, 154, 240, 0.26));
+  background: var(--inv-sb-rail);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
-  box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.16);
+  box-shadow: var(--inv-sb-rail-rim);
   transition: width 0.3s var(--sb-ease);
 }
 .sb3d:hover .sb3d__track,
@@ -33,7 +33,7 @@
 .sb3d__fill {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #031f94 0%, #0333b7 40%, #0b9af0 80%, #8cd6ff 100%);
+  background: var(--inv-sb-thumb);
   clip-path: inset(0 0 calc(100% - var(--fill, 0px)) 0);
   pointer-events: none;
 }
@@ -62,9 +62,8 @@
   cursor: grab;
   touch-action: none;
   transform: translateY(var(--y, 0px));
-  background: linear-gradient(180deg, #8cd6ff, #0b9af0 45%, #0333b7);
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 3px 8px rgba(2, 8, 24, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+ background: var(--inv-sb-thumb);
+  box-shadow: var(--inv-sb-thumb-shadow);
   transition: filter 0.25s var(--sb-ease);
 }
 .sb3d:hover .sb3d__thumb { filter: brightness(1.15) saturate(1.1); }

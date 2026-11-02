@@ -1,28 +1,18 @@
-import { courses } from "../data/courses";
-import { courseDetails } from "../data/courseDetails";
 import { ROUTES } from "./constant";
 
 export const slugify = (s) =>
   String(s).toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-/** Stable slug: explicit `slug`, else the last segment of the existing `href`, else the slugified title. */
+/** Stable slug: explicit `slug`, else the last segment of the `href`, else the slugified title. */
 export const slugOf = (c) =>
   c.slug || (typeof c.href === "string" && c.href.split("/").filter(Boolean).pop()) || slugify(c.title);
 
 export const courseHref = (slug) => `${ROUTES.courses}/${slug}`;
 export const enrollHref = (slug) => `${ROUTES.courses}/${slug}/enroll`;
 
-export const allCourses = courses.map((c) => {
-  const slug = slugOf(c);
-  return { ...c, slug, href: c.href || courseHref(slug) };
-});
-
-export const getCourseBySlug = (slug) => allCourses.find((c) => c.slug === slug) || null;
-export const getDetail = (slug) => courseDetails[slug] || null;
-
-export function getRelated(course, n = 3) {
+export function getRelated(course, n = 3, list = []) {
   const tech = new Set(course.technologies || []);
-  return allCourses
+  return list
     .filter((c) => c.slug !== course.slug)
     .map((c) => ({
       c,

@@ -3,6 +3,8 @@ import { authApi } from "../services/authApi";
 import { employeesApi } from "../services/employeesApi";
 import { dashboardApi } from "../services/dashboardApi";
 import { enquiryApi } from "../services/enquiryApi";
+import { enrollmentApi } from "../services/enrollmentApi";
+import { publicCoursesApi } from "../services/publicCoursesApi";
 
 export const store = configureStore({
   reducer: {
@@ -10,7 +12,16 @@ export const store = configureStore({
     [employeesApi.reducerPath]: employeesApi.reducer,
     [dashboardApi.reducerPath]: dashboardApi.reducer,
     [enquiryApi.reducerPath]: enquiryApi.reducer,
+    [enrollmentApi.reducerPath]: enrollmentApi.reducer,
+    [publicCoursesApi.reducerPath]: publicCoursesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware, employeesApi.middleware, dashboardApi.middleware, enquiryApi.middleware),
+    getDefaultMiddleware().concat(
+      authApi.middleware,
+      employeesApi.middleware,
+      dashboardApi.middleware,
+      enquiryApi.middleware,
+      enrollmentApi.middleware,
+      publicCoursesApi.middleware
+    ),
 });

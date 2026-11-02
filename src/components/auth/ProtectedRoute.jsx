@@ -22,6 +22,9 @@ export default function ProtectedRoute({ children, roles }) {
   }
 
   if (!isAuthenticated) return <Navigate to={ROUTES.login} replace state={{ from: location }} />;
+  if (user.mustChangePassword && location.pathname !== ROUTES.changePassword) {
+    return <Navigate to={ROUTES.changePassword} replace />;
+  }
   if (roles && !roles.includes(user.role)) return <Navigate to={ROUTES.home} replace />;
 
   return children;

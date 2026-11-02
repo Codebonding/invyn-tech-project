@@ -22,7 +22,7 @@ function Hero() {
       <div className="hero-overlay"></div>
 
       {/* Content */}
-      <div className="container hero-content">
+      {/* <div className="container hero-content">
         <div className="row align-items-center min-vh-100">
           <div className="col-lg-8">
             <span className="hero-badge">INNOVATION • TECHNOLOGY • FUTURE</span>
@@ -46,8 +46,8 @@ function Hero() {
               </Button>
             </div>
           </div>
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
 
       {/* Bottom Gradient */}
       <div className="hero-bottom-fade"></div>

@@ -11,7 +11,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import useReducedMotion from "../hooks/useReducedMotion";
 import { mq } from "../utils/responsive";
 import { ROUTES } from "../utils/constant";
-import { allCourses } from "../utils/courses";
+import useAllCourses from "../hooks/useAllCourses";
 import { buildOptions, filterCourses, sortCourses } from "../utils/courseFilters";
 import "../styles/course-pages.css";
 
@@ -26,7 +26,8 @@ export default function CoursesPage() {
   const belowTablet = useMediaQuery(mq.belowTablet);
   const tilt = reduced || belowTablet ? 0 : 1;
 
-  const options = useMemo(() => buildOptions(allCourses), []);
+  const { courses: allCourses } = useAllCourses();
+  const options = useMemo(() => buildOptions(allCourses), [allCourses]);
   const { filters, set, clear, dirty } = useCourseFilters(options);
   const results = useMemo(() => sortCourses(filterCourses(allCourses, filters), filters.sort), [filters]);
 

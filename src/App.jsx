@@ -26,7 +26,7 @@ import AdminDashboardPage from "./pages/AdminDashboardPage";
 import { useSectionScroll } from "./utils/scroll";
 import AdminEnquiriesPage from "./pages/AdminEnquiriesPage";
 import ChatbotWidget from "./components/chatbot/ChatbotWidget";
-
+import ChangePasswordPage from "./pages/ChangePasswordPage";
 import "./styles/effects-3d.css";
 
 export default function App() {
@@ -34,29 +34,75 @@ export default function App() {
   useTilt3D();
   return (
     <>
-       <SessionBootstrap />
-       <ChatbotWidget />
+      <SessionBootstrap />
+      <ChatbotWidget />
       <AnimatedBackground />
       <Header />
       <Routes>
-        <Route path="/" element={<><Hero /><HomeSections /></>} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <HomeSections />
+            </>
+          }
+        />
         <Route path="/courses" element={<CoursePage />} />
         <Route path="/courses/:slug" element={<CourseDetailPage />} />
         <Route path="/courses/:slug/enroll" element={<CourseEnrollPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/:slug" element={<ServiceDetailPage />} />
-        <Route path="/services/:slug/enquiry" element={<ServiceEnquiryPage />} />
+        <Route
+          path="/services/:slug/enquiry"
+          element={<ServiceEnquiryPage />}
+        />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms-and-conditions" element={<TermsPage />} />
-         <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <AccountPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/setup-account" element={<SetupAccountPage />} />
-        <Route path="/admin/employees" element={<ProtectedRoute roles={["admin"]}><AdminEmployeesPage /></ProtectedRoute>} />
-<Route path="/admin/enquiries" element={<ProtectedRoute roles={["admin"]}><AdminEnquiriesPage /></ProtectedRoute>} />
-<Route path="/admin" element={<ProtectedRoute roles={["admin"]}><AdminDashboardPage /></ProtectedRoute>} />
+        <Route
+          path="/admin/employees"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <AdminEmployeesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/enquiries"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <AdminEnquiriesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <AdminDashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/change-password"
+          element={
+            <ProtectedRoute>
+              <ChangePasswordPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="*" element={<NotFoundPage />} />
-
       </Routes>
       <Footer />
       <ScrollBar3D />

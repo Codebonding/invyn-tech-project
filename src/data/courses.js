@@ -13,7 +13,6 @@ export const coursesIntro = {
   description:
     "Our practical technology courses are designed to help students and aspiring developers move from learning concepts to building real-world projects.",
 };
-
 export const courses = [
  { id: "ai-ml", title: "AI & Machine Learning", shortTitle: "AI & ML", category: "AI", duration: "6 Months", mode: "Online / Offline", level: "Beginner to Advanced", description: "Build practical AI and machine learning skills, from data handling to model building and deployment.", technologies: ["Python", "Machine Learning", "Deep Learning"], image: AIML, href: "/courses/ai-machine-learning" },
   { id: "full-stack", title: "Full Stack Development", shortTitle: "Full Stack", category: "Web", duration: "6 Months", mode: "Online / Offline", level: "Beginner to Advanced", description: "Create complete web applications with frontend, backend, databases, APIs and deployment.", technologies: ["React", "Node.js", "SQL"], image: FSD, href: "/courses/full-stack-development" },

@@ -1,0 +1,77 @@
+/* Enrolment page and "My enrolments". Builds on the .inv-enroll / .inv-enroll__done card styles in course-pages.css. */
+.inv-status {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 999px;
+    font-size: .8rem;
+    font-weight: 600;
+    border: 1px solid currentColor;
+    text-transform: capitalize;
+}
+
+.inv-status--active {
+    color: #2fbf71;
+}
+
+.inv-status--completed {
+    color: #8CD6FF;
+}
+
+.inv-status--cancelled {
+    color: #ef6a5b;
+}
+
+.inv-enroll form>.inv-enroll__done {
+    margin-top: 16px;
+}
+
+.inv-enroll__done .inv-cd__facts {
+    margin-bottom: 14px;
+}
+
+.inv-enroll__done .inv-cd__facts:last-child {
+    margin-bottom: 0;
+}
+
+.inv-myenr {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.inv-myenr__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 14px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(140, 214, 255, .18);
+    background: rgba(255, 255, 255, .04);
+}
+
+.inv-myenr__main {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+}
+
+.inv-myenr__title {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.inv-myenr__meta {
+    font-size: .85rem;
+    color: var(--inv-text-muted, #B9C8DC);
+}
+
+.inv-myenr__side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
