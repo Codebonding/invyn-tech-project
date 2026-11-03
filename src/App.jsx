@@ -27,6 +27,7 @@ import { useSectionScroll } from "./utils/scroll";
 import AdminEnquiriesPage from "./pages/AdminEnquiriesPage";
 import ChatbotWidget from "./components/chatbot/ChatbotWidget";
 import ChangePasswordPage from "./pages/ChangePasswordPage";
+import StudentDashboardPage from "./pages/StudentDashboardPage";
 import "./styles/effects-3d.css";
 
 export default function App() {
@@ -69,6 +70,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/student" element={<ProtectedRoute roles={["student"]}><StudentDashboardPage /></ProtectedRoute>} />
         <Route path="/setup-account" element={<SetupAccountPage />} />
         <Route
           path="/admin/employees"

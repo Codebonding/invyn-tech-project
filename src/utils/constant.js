@@ -27,6 +27,7 @@ export const ROUTES = {
    login: "/login",
   register: "/register",
   account: "/account",
+  studentDashboard: "/student",
   changePassword: "/change-password",
   privacy: "/privacy-policy",
   terms: "/terms-and-conditions",
