@@ -20,7 +20,7 @@ export default function ProfileCard({ profile }) {
           <div><dt>Joined</dt><dd>{formatDate(profile.joinedAt)}</dd></div>
         </dl>
       </div>
-      <Link className="sd-btn sd-btn--outline" to={ROUTES.account}>Edit profile</Link>
+      <Link className="sd-btn sd-btn--outline" to={ROUTES.studentProfile}>Edit profile</Link>
     </section>
   );
 }

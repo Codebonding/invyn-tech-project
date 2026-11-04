@@ -28,6 +28,8 @@ export const ROUTES = {
   register: "/register",
   account: "/account",
   studentDashboard: "/student",
+    studentProfile: "/student/profile",
+    studentCourses: "/student/courses",
   changePassword: "/change-password",
   privacy: "/privacy-policy",
   terms: "/terms-and-conditions",
@@ -38,5 +40,5 @@ export const ROUTES = {
 };
 
 export const getCourseRoute = (slug) => `/courses/${slug}`;
-
+export const getStudentCourseRoute = (courseId) => `/student/courses/${courseId}`;
 export const getServiceRoute = (slug) => `/services/${slug}`;

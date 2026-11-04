@@ -6,7 +6,7 @@ import { ROUTES } from "../../utils/constant";
  * never as dead links.
  */
 const ITEMS = [
-  { label: "My Courses", href: "#courses" },
+  { label: "My Courses", to: ROUTES.studentCourses },
   { label: "Class Schedule", href: "#sessions" },
   { label: "Announcements", href: "#announcements" },
   { label: "Notifications", href: "#notifications" },

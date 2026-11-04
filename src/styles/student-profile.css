@@ -1,0 +1,67 @@
+/* Student profile. Reuses the dashboard's .sd-card / .sd-btn / .sd-badge classes; tokens are scoped to .sp. */
+.sp {
+  --sd-primary: #031F94; --sd-secondary: #0333B7; --sd-accent: #0B9AF0; --sd-navy: #122B44; --sd-gray: #56575C;
+  --sd-bg: #F4F6FB; --sd-surface: #FFFFFF; --sd-border: #E1E6F0; --sd-muted: #56575C;
+  --sd-ok: #12805C; --sd-warn: #B45309; --sd-danger: #B42318;
+  padding: 1rem 0 4rem; color: var(--sd-navy);
+}
+.sp a { color: var(--sd-primary); }
+.sp h1, .sp h2 { color: var(--sd-navy); margin: 0; }
+.sp-back { margin-bottom: 1rem; font-weight: 500; }
+.sp a:focus-visible, .sp button:focus-visible, .sp input:focus-visible, .sp select:focus-visible, .sp textarea:focus-visible { outline: 3px solid var(--sd-accent); outline-offset: 2px; }
+
+/* layout */
+.sp-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; align-items: start; }
+.sp-header { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+.sp-header__main { flex: 1 1 14rem; min-width: 0; display: grid; gap: .3rem; }
+.sp-section__head { display: flex; justify-content: space-between; align-items: center; gap: .75rem; margin-bottom: .9rem; }
+.sp-section__head h2 { font-size: 1.1rem; }
+
+/* read-only lists */
+.sp-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .9rem 1.25rem; margin: 0; }
+.sp-grid dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--sd-gray); font-weight: 600; }
+.sp-grid dd { margin: .15rem 0 0; font-weight: 600; overflow-wrap: anywhere; }
+.sp-grid dd.is-empty { color: var(--sd-gray); font-weight: 400; font-style: italic; }
+.sp-cap { text-transform: capitalize; }
+
+/* forms */
+.sp-grid--form { align-items: start; }
+.sp-field { display: grid; gap: .3rem; }
+.sp-field label, .sp-label { font-size: .85rem; font-weight: 600; }
+.sp-input { width: 100%; padding: .5rem .7rem; border: 1px solid #C5CCDB; border-radius: 10px; font: inherit; background: #fff; color: var(--sd-navy); }
+.sp-input:focus { border-color: var(--sd-accent); }
+.sp-input.is-invalid { border-color: var(--sd-danger); }
+.sp-input:disabled { background: #F0F2F7; }
+.sp-readonly { margin: 0; padding: .5rem .7rem; background: #F0F2F7; border-radius: 10px; overflow-wrap: anywhere; }
+.sp-error { color: var(--sd-danger); font-size: .85rem; margin: 0; }
+.sp-check label { display: flex; align-items: center; gap: .5rem; font-weight: 500; padding-top: 1.4rem; }
+.sp-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; }
+.sp-eduform { border: 1px solid var(--sd-border); background: #F8FAFE; border-radius: 12px; padding: 1rem; margin-bottom: 1rem; }
+
+/* education list */
+.sp-edu { list-style: none; margin: 0; padding: 0; display: grid; gap: .9rem; }
+.sp-edu li { display: flex; justify-content: space-between; align-items: flex-start; gap: .75rem; padding-bottom: .9rem; border-bottom: 1px solid var(--sd-border); }
+.sp-edu li:last-child { border-bottom: 0; padding-bottom: 0; }
+.sp-edu__title { margin: 0; font-weight: 600; display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.sp-edu__actions { display: flex; gap: .4rem; flex: none; }
+
+/* avatar */
+.sp-avatar { display: grid; gap: .4rem; justify-items: center; text-align: center; max-width: 12rem; }
+.sp-avatar__img { width: 96px; height: 96px; font-size: 1.8rem; }
+.sp-avatar__actions { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; }
+
+/* dialog */
+.sp-overlay { position: fixed; inset: 0; background: rgba(18, 43, 68, .55); display: grid; place-items: center; padding: 1rem; z-index: 1090; }
+.sp-dialog { background: #fff; border-radius: 16px; padding: 1.4rem; width: min(26rem, 100%); box-shadow: 0 12px 32px rgba(18, 43, 68, .3); display: grid; gap: .6rem; }
+.sp-dialog h2 { font-size: 1.15rem; }
+.sp-danger { background: var(--sd-danger); border-color: var(--sd-danger); }
+.sp-danger:hover:not(:disabled) { background: #8F1B12; }
+
+/* responsive */
+@media (max-width: 991px) { .sp-layout { grid-template-columns: 1fr; } }
+@media (max-width: 575px) {
+  .sp-grid { grid-template-columns: 1fr; }
+  .sp-header { flex-direction: column; align-items: stretch; text-align: center; }
+  .sp-header .sp-avatar { margin: 0 auto; }
+  .sp-edu li { flex-direction: column; }
+}

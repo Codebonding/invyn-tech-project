@@ -107,10 +107,15 @@ export default function AccountPage() {
             <p><strong>Role:</strong> {user.role}</p>
             <div className="inv-enroll__actions">
               {user.role === "student" && (
-  <Link className="inv-btn inv-btn--primary" to={ROUTES.studentDashboard}>
-    Student dashboard
-  </Link>
-)}
+                <>
+                  <Link className="inv-btn inv-btn--primary" to={ROUTES.studentDashboard}>
+                    Student dashboard
+                  </Link>
+                  <Link className="inv-btn inv-btn--outline" to={ROUTES.studentProfile}>
+                    Edit profile
+                  </Link>
+                </>
+              )}
               {user.role === "admin" && (
                 <>
                   <Link className="inv-btn inv-btn--primary" to={ROUTES.adminDashboard}>Admin dashboard</Link>

@@ -1,0 +1,39 @@
+/* My Courses. Builds on the dashboard (.sd-*) and profile (.sp, .sp-field, .sp-input) styles. */
+.mc-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.mc-header h1 { font-size: 1.8rem; }
+.mc .sd-stats { margin-bottom: 1.25rem; }
+
+/* filters */
+.mc-filters { display: grid; gap: .9rem; margin-bottom: 1.25rem; }
+.mc-filters__row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: .8rem; align-items: end; }
+.mc-clear { align-self: end; }
+
+/* cards */
+.mc-card { height: 100%; }
+.mc-category { margin: 0; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--sd-secondary); }
+.mc-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem .9rem; margin: .25rem 0; }
+.mc-facts dt { font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--sd-gray, #56575C); font-weight: 600; }
+.mc-facts dd { margin: 0; font-size: .88rem; font-weight: 600; overflow-wrap: anywhere; }
+.mc-cap { text-transform: capitalize; }
+.mc-note { background: #FDF6E3; border-radius: 10px; padding: .5rem .7rem; }
+.sd-courses > .mc-card { transition: box-shadow .15s ease; }
+.sd-courses > .mc-card:hover { box-shadow: 0 6px 18px rgba(18, 43, 68, .12); }
+
+/* states */
+.mc-dim { opacity: .65; transition: opacity .15s ease; }
+.mc-pager { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 1.25rem; }
+
+/* course page */
+.mc-hero { display: grid; gap: .5rem; }
+.mc-hero h1 { font-size: 1.6rem; }
+.mc-material__head { display: flex; justify-content: space-between; align-items: flex-start; gap: .75rem; }
+.mc-notes { white-space: pre-wrap; background: #F8FAFE; border: 1px solid var(--sd-border); border-radius: 10px; padding: .75rem; margin: .6rem 0 0; }
+
+@media (max-width: 991px) { .mc-filters__row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 575px) {
+  .mc-filters__row { grid-template-columns: 1fr; }
+  .mc-facts { grid-template-columns: 1fr 1fr; }
+  .mc-material__head { flex-direction: column; }
+  .mc-header h1 { font-size: 1.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .sd-courses > .mc-card, .mc-dim { transition: none; } }
