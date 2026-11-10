@@ -1,0 +1,38 @@
+/* Learning materials. Builds on the dashboard (.sd-*), profile (.sp-*) and my-courses (.mc-*) styles. */
+.lm-filters { display: grid; grid-template-columns: 2fr repeat(5, minmax(0, 1fr)) auto; gap: .8rem; align-items: end; margin-bottom: 1.25rem; }
+.lm-clear { align-self: end; }
+
+/* table */
+.lm-table-wrap { overflow-x: auto; background: var(--sd-surface); border: 1px solid var(--sd-border); border-radius: 16px; }
+.lm-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.lm-table th { text-align: left; font-size: .72rem; text-transform: uppercase; letter-spacing: .05em; color: var(--sd-gray, #56575C); padding: .8rem; border-bottom: 1px solid var(--sd-border); white-space: nowrap; }
+.lm-table td { padding: .8rem; border-bottom: 1px solid var(--sd-border); vertical-align: top; overflow-wrap: anywhere; }
+.lm-table tr:last-child td { border-bottom: 0; }
+.lm-table td strong { display: block; }
+.lm-actions { display: flex; flex-wrap: wrap; gap: .35rem; }
+.lm-danger { border-color: var(--sd-danger); color: var(--sd-danger) !important; }
+.lm-danger:hover:not(:disabled) { background: #FDECEA; }
+
+/* form */
+.lm-form { margin-bottom: 1.25rem; display: grid; gap: .9rem; }
+.lm-form h2 { font-size: 1.1rem; }
+.lm-form__wide { grid-column: 1 / -1; }
+.lm-preview { display: grid; gap: .4rem; margin-top: .4rem; }
+.lm-preview img { max-width: 14rem; max-height: 10rem; object-fit: contain; border: 1px solid var(--sd-border); border-radius: 10px; }
+
+/* student view */
+.mc-modules { display: grid; gap: 1.25rem; }
+.mc-module__title { font-size: 1rem; margin: 0 0 .5rem; padding-bottom: .4rem; border-bottom: 2px solid var(--sd-border); }
+.lm-embed { position: relative; aspect-ratio: 16 / 9; margin-top: .6rem; max-width: 40rem; }
+.lm-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 12px; }
+
+@media (max-width: 1199px) { .lm-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); } .lm-filters__search { grid-column: 1 / -1; } }
+@media (max-width: 767px) {
+  .lm-filters { grid-template-columns: 1fr; }
+  /* the table becomes stacked cards on phones */
+  .lm-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .lm-table, .lm-table tbody, .lm-table tr, .lm-table td { display: block; width: 100%; }
+  .lm-table tr { padding: .6rem .2rem; border-bottom: 1px solid var(--sd-border); }
+  .lm-table td { border: 0; padding: .25rem .8rem; display: flex; justify-content: space-between; gap: 1rem; }
+  .lm-table td::before { content: attr(data-label); font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: var(--sd-gray, #56575C); font-weight: 600; flex: none; }
+}

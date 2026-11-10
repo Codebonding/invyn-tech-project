@@ -1,0 +1,22 @@
+/* Notifications and announcements. Builds on dashboard (.sd-*), profile (.sp-*), my-courses (.mc-*), materials (.lm-*). */
+.nt-layout { display: grid; grid-template-columns: minmax(0, 1fr) 20rem; gap: 1.25rem; align-items: start; }
+.nt-list { list-style: none; margin: 0; padding: 0; }
+.nt-item { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--sd-border); }
+.nt-item:last-child { border-bottom: 0; }
+.nt-item.is-unread { background: #F2F7FF; border-left: 4px solid var(--sd-accent); }
+.nt-item__main { min-width: 0; display: grid; gap: .25rem; }
+.nt-item__title { margin: 0; font-weight: 600; display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; overflow-wrap: anywhere; }
+.nt-item.is-unread .nt-item__title { font-weight: 700; color: var(--sd-primary); }
+.nt-item__body { margin: 0; overflow-wrap: anywhere; }
+.nt-item__actions { display: flex; flex-wrap: wrap; gap: .4rem; align-content: flex-start; justify-content: flex-end; flex: none; max-width: 14rem; }
+.nt-message { white-space: pre-wrap; overflow-wrap: anywhere; margin: .5rem 0 1rem; }
+.nt-dialog { max-height: 90vh; overflow-y: auto; }
+
+.nt-badge--important { background: #FDECD3; color: #B45309; }
+.nt-badge--urgent { background: #FDECEA; color: #B42318; }
+.nt-status--ok { background: #DDF5EC; color: #12805C; }
+.nt-status--info { background: #E8EEFF; color: #031F94; }
+.nt-status--warn { background: #EEF1F8; color: #56575C; }
+
+@media (max-width: 991px) { .nt-layout { grid-template-columns: 1fr; } }
+@media (max-width: 575px) { .nt-item { flex-direction: column; } .nt-item__actions { justify-content: flex-start; max-width: none; } }

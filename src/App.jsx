@@ -31,6 +31,16 @@ import StudentDashboardPage from "./pages/StudentDashboardPage";
 import StudentProfilePage from "./pages/StudentProfilePage";
 import MyCoursesPage from "./pages/MyCoursesPage";
 import StudentCoursePage from "./pages/StudentCoursePage";
+import StaffMaterialsPage from "./pages/StaffMaterialsPage";
+import MarkAttendancePage from "./pages/MarkAttendancePage";
+import StaffAttendancePage from "./pages/StaffAttendancePage";
+import StudentAttendancePage from "./pages/StudentAttendancePage";
+import StudentFeesPage from "./pages/StudentFeesPage";
+import AdminFeesPage from "./pages/AdminFeesPage";
+import FeeStructuresPage from "./pages/FeeStructuresPage";
+import FeeDetailPage from "./pages/FeeDetailPage";
+import StudentNotificationsPage from "./pages/StudentNotificationsPage";
+import AnnouncementsPage from "./pages/AnnouncementsPage";
 import "./styles/effects-3d.css";
 
 export default function App() {
@@ -131,6 +141,70 @@ export default function App() {
           }
         />
         <Route
+          path="/staff/materials"
+          element={
+            <ProtectedRoute roles={["admin", "employee"]}>
+              <StaffMaterialsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/staff/attendance"
+          element={
+            <ProtectedRoute roles={["admin", "employee"]}>
+              <StaffAttendancePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/staff/attendance/mark"
+          element={
+            <ProtectedRoute roles={["admin", "employee"]}>
+              <MarkAttendancePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/attendance"
+          element={
+            <ProtectedRoute roles={["student"]}>
+              <StudentAttendancePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/student/fees"
+          element={
+            <ProtectedRoute roles={["student"]}>
+              <StudentFeesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/staff/fees"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <AdminFeesPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/staff/fees/structures"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <FeeStructuresPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/staff/fees/:id"
+          element={
+            <ProtectedRoute roles={["admin"]}>
+              <FeeDetailPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/change-password"
           element={
             <ProtectedRoute>
@@ -138,6 +212,8 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/student/notifications" element={<ProtectedRoute roles={["student"]}><StudentNotificationsPage /></ProtectedRoute>} />
+<Route path="/staff/announcements" element={<ProtectedRoute roles={["admin", "employee"]}><AnnouncementsPage /></ProtectedRoute>} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />

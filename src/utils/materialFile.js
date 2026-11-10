@@ -1,17 +1,17 @@
 import axiosInstance from "../services/axiosInstance";
 
 /**
- * Private PDFs are fetched through the authorised API (cookies + CSRF header via axiosInstance) and opened from a
- * temporary blob URL. The real file path is never exposed to the browser.
+ * Private files are fetched through the authorised API (cookies + CSRF header via axiosInstance) and opened from a
+ * temporary blob URL. The real storage path is never exposed to the browser.
  */
-export async function openMaterialFile(material) {
-  const response = await axiosInstance.get(material.downloadPath, { responseType: "blob" });
+export async function openPrivateFile(path, { download = false, fileName = "file", params } = {}) {
+  const response = await axiosInstance.get(path, { responseType: "blob", params });
   const url = URL.createObjectURL(response.data);
 
-  if (material.allowDownload) {
+  if (download) {
     const link = document.createElement("a");
     link.href = url;
-    link.download = material.fileName || "material.pdf";
+    link.download = fileName;
     document.body.appendChild(link);
     link.click();
     link.remove();

@@ -114,14 +114,41 @@ export default function AccountPage() {
                   <Link className="inv-btn inv-btn--outline" to={ROUTES.studentProfile}>
                     Edit profile
                   </Link>
+                  <Link className="inv-btn inv-btn--outline" to={ROUTES.studentFees}>
+  My fees
+</Link>
+                  <Link
+  className="inv-btn inv-btn--outline"
+  to={ROUTES.studentAttendance}
+>
+  My attendance
+</Link>
                 </>
               )}
               {user.role === "admin" && (
                 <>
                   <Link className="inv-btn inv-btn--primary" to={ROUTES.adminDashboard}>Admin dashboard</Link>
                   <Link className="inv-btn inv-btn--outline" to={ROUTES.adminEmployees}>Manage employees</Link>
+                  <Link className="inv-btn inv-btn--outline" to={ROUTES.staffFees}>
+  Fee management
+</Link>
                 </>
               )}
+      {(user.role === "admin" || user.role === "employee") && (
+  <>
+    <Link className="inv-btn inv-btn--outline" to={ROUTES.staffMaterials}>
+      Learning materials
+    </Link>
+
+    <Link className="inv-btn inv-btn--outline" to={ROUTES.staffAttendanceMark}>
+      Mark attendance
+    </Link>
+
+    <Link className="inv-btn inv-btn--outline" to={ROUTES.staffAttendance}>
+      Attendance records
+    </Link>
+  </>
+)}
               <Link className="inv-btn inv-btn--outline" to={ROUTES.changePassword}>Change password</Link>
               <button type="button" className="inv-btn inv-btn--primary" onClick={onLogout} disabled={isLoading}>
                 {isLoading ? "Logging out…" : "Log out"}

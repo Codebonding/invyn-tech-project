@@ -30,6 +30,10 @@ export const ROUTES = {
   studentDashboard: "/student",
     studentProfile: "/student/profile",
     studentCourses: "/student/courses",
+    staffAttendance: "/staff/attendance",
+  staffAttendanceMark: "/staff/attendance/mark",
+  studentAttendance: "/student/attendance",
+  staffMaterials: "/staff/materials",
   changePassword: "/change-password",
   privacy: "/privacy-policy",
   terms: "/terms-and-conditions",
@@ -37,6 +41,12 @@ export const ROUTES = {
   adminEmployees: "/admin/employees",
   adminEnquiries: "/admin/enquiries",
   adminDashboard: "/admin",
+  studentFees: "/student/fees",
+   studentNotifications: "/student/notifications",
+  staffAnnouncements: "/staff/announcements",
+  staffFees: "/staff/fees",
+  staffFeeStructures: "/staff/fees/structures",
+  staffFeeDetail: (id) => `/staff/fees/${id}`,
 };
 
 export const getCourseRoute = (slug) => `/courses/${slug}`;

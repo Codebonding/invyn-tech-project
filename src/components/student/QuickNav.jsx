@@ -9,11 +9,13 @@ const ITEMS = [
   { label: "My Courses", to: ROUTES.studentCourses },
   { label: "Class Schedule", href: "#sessions" },
   { label: "Announcements", href: "#announcements" },
-  { label: "Notifications", href: "#notifications" },
+{ label: "Notifications", to: ROUTES.studentNotifications },
   { label: "My Profile", to: ROUTES.account },
   { label: "Learning Materials", soon: true },
   { label: "Assignments", soon: true },
   { label: "Assessments", soon: true },
+  { label: "Attendance", to: ROUTES.studentAttendance },
+  { label: "Fees", to: ROUTES.studentFees },
 ];
 
 export default function QuickNav() {

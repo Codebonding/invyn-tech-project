@@ -1,0 +1,18 @@
+/* Fees. Builds on dashboard (.sd-*), profile (.sp-*), my-courses (.mc-*), materials (.lm-*) and attendance (.at-*) styles. */
+.fe-status { margin: .25rem 0; font-size: 1.1rem; }
+.fe-badge--ok { background: #DDF5EC; color: #12805C; }
+.fe-badge--danger { background: #FDECEA; color: #B42318; }
+.fe-badge--warn { background: #FDECD3; color: #B45309; }
+.fe-badge--info { background: #E8EEFF; color: #031F94; }
+
+.fe-fee h3 { font-size: 1.05rem; margin: 0; }
+.fe-rows { display: grid; gap: .45rem; margin: .5rem 0 .75rem; }
+.fe-rows > div { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--sd-border); padding-bottom: .35rem; }
+.fe-rows dt { color: var(--sd-gray, #56575C); font-size: .88rem; }
+.fe-rows dd { margin: 0; font-weight: 600; text-align: right; }
+.fe-rows .is-strong dd { color: var(--sd-primary); font-size: 1.05rem; }
+.fe .sd-btn.sd-btn--primary { margin-top: .75rem; }
+
+.fe-dialog { max-height: 90vh; overflow-y: auto; }
+.fe code { font-size: .8rem; overflow-wrap: anywhere; }
+[role="tablist"] .sd-chip[aria-selected="true"] { background: var(--sd-primary); border-color: var(--sd-primary); color: #fff; }

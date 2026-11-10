@@ -1,6 +1,6 @@
 import { formatDate } from "../../utils/studentFormat";
 import { EmptyState } from "./StudentStates";
-
+import PriorityBadge from "../notifications/PriorityBadge";
 export default function AnnouncementList({ items }) {
   return (
     <section id="announcements" className="sd-card sd-section" aria-labelledby="sd-ann-h">
@@ -11,7 +11,7 @@ export default function AnnouncementList({ items }) {
         <ul className="sd-list">
           {items.map((a) => (
             <li key={a.id}>
-              <p className="sd-timeline__title">{a.title}</p>
+              <p className="sd-timeline__title">{a.title} <PriorityBadge priority={a.priority} /></p>
               <p className="sd-muted sd-clamp">{a.body}</p>
               <p className="sd-muted"><span className="sd-tag">{a.courseTitle || "All students"}</span> {formatDate(a.publishedAt)}</p>
             </li>

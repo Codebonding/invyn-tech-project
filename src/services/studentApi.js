@@ -18,7 +18,7 @@ const PROFILE_TAGS = ["StudentProfile", "StudentDashboard"];
  * so no new reducer or middleware is needed and logout already clears this cache.
  */
 export const studentApi = dashboardApi
-    .enhanceEndpoints({ addTagTypes: ["StudentDashboard", "StudentNotifications", "StudentProfile", "StudentEducation", "StudentCourses", "StudentCourse", "StudentMaterials"] })
+    .enhanceEndpoints({ addTagTypes: ["StudentDashboard", "StudentNotifications", "StudentProfile", "StudentEducation", "StudentCourses", "StudentCourse", "StudentMaterials", "Notifications"] })
   .injectEndpoints({
     endpoints: (build) => ({
       // ---- dashboard ----
@@ -36,7 +36,7 @@ export const studentApi = dashboardApi
 
       markNotificationRead: build.mutation({
         query: (id) => ({ url: `/student/notifications/${encodeURIComponent(id)}/read`, method: "PATCH" }),
-        invalidatesTags: ["StudentDashboard", "StudentNotifications"],
+        invalidatesTags: ["StudentDashboard", "StudentNotifications","Notifications"],
       }),
 
       completeLesson: build.mutation({

@@ -124,5 +124,7 @@ export const ADMIN_NAV_ITEMS = [
     { id: "admin-dashboard", label: "Dashboard", to: ROUTES.adminDashboard, end: true },
   { id: "admin-employees", label: "Employees", to: ROUTES.adminEmployees },
   { id: "admin-site", label: "View website", to: ROUTES.home, end: true },
-    { id: "admin-enquiries", label: "Enquiries", to: ROUTES.adminEnquiries },
+    // { id: "admin-enquiries", label: "Enquiries", to: ROUTES.adminEnquiries },
+    // { id: "admin-materials", label: "Materials", to: ROUTES.adminMaterials },
+   { id: "admin-staff", label: "Staff ", to: ROUTES.staffMaterials },
 ];
